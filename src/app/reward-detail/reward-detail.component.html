@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="balance-card">
+        <div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <!-- Left side: Balance and Points -->
+                <div style="display: flex; flex-direction: column;">
+                    <p class="balance-info" style="margin: 0;">
+                        Balance
+                        <span class="fas fa-info-circle"></span>
+                    </p>
+                    <p class="points" style="margin: 0;">
+                        200
+                        <span style="font-size: 14px; font-weight: 400; line-height: 20px;">
+                            Points
+                        </span>
+                    </p>
+                </div>
+                <!-- Right side: Image -->
+                <div>
+                    <img src="/assets/Badge_03.png" alt="" style="height: 60px; width: 60px; object-fit: contain;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="back-button" (click)="goBack()">
+        <i class="fas fa-arrow-left" style="border-radius: 50%;
+     background-color: #6D428F;
+     color: white;
+     padding: 4px;
+    
+     font-size: 13px;
+     align-items: end;
+     width: 20px;
+     height: 20px;">
+        </i>
+        Back
+    </div>
+   
+</div>  

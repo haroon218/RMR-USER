@@ -1,0 +1,323 @@
+<div class="container">
+    <div class="balance-card">
+        <div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <!-- Left side: Balance and Points -->
+                <div style="display: flex; flex-direction: column;">
+                    <p class="balance-info" style="margin: 0;">
+                        Balance
+                        <span class="fas fa-info-circle"></span>
+                    </p>
+                    <p class="points" style="margin: 0;">
+                        200
+                        <span style="font-size: 14px; font-weight: 400; line-height: 20px;">
+                            Points
+                        </span>
+                    </p>
+                </div>
+                <!-- Right side: Image -->
+                <div>
+                    <img src="/assets/Badge_03.png" alt="" style="height: 60px; width: 60px; object-fit: contain;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="back-button" (click)="goBack()">
+        <i class="fas fa-arrow-left" style="border-radius: 50%;
+     background-color: #6D428F;
+     color: white;
+     padding: 4px;
+    
+     font-size: 13px;
+     align-items: end;
+     width: 20px;
+     height: 20px;">
+        </i>
+        Back
+    </div>
+    <img alt="Pizza with various toppings" class="header-image" height="75"
+        src="https://storage.googleapis.com/a1aa/image/oWKa7vq0n67ePK7ydpURy10xUdXCDnUHTKiqf2JsOwjKyW1TA.jpg" />
+    <div class="text-center">
+        <img alt="Pizza Hut logo" class="profile-image" height="100"
+            src="https://storage.googleapis.com/a1aa/image/VUo78GSkg7ahPBHYAthc1CqPlJRnLP3jSVS2ID9qmNBisV9E.jpg"
+            width="100" />
+        <div class="profile-name">
+            Pizza Hut
+        </div>
+        <div class="profile-description">
+            serves fresh pizzas with various toppings in a welcoming atmosphere
+        </div>
+    </div>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" [ngClass]="{'active': activeTab === 'offer'}" style="padding: 7px;"
+                (click)="selectTab('offer')">
+                Offer
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [ngClass]="{'active': activeTab === 'rewards'}" style="padding: 7px;"
+                (click)="selectTab('rewards')">
+                Rewards
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [ngClass]="{'active': activeTab === 'branches'}" style="padding: 7px;"
+                (click)="selectTab('branches')">
+                Branches
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [ngClass]="{'active': activeTab === 'reviews'}" style="padding: 7px;"
+                (click)="selectTab('reviews')">
+                Reviews
+            </a>
+        </li>
+    </ul>
+
+
+    <ng-container *ngIf="activeTab === 'offer'">
+        <div class="container mt-4" style="padding: 0;">
+        <div class="card offer-card" routerLink="/offer-detail">
+            <img alt="Burger with cheese and drink offer" class="card-img-top" height="200"
+                src="https://storage.googleapis.com/a1aa/image/SdExbI1adu6mFVLU6182fdlHRCD1FIKeaUmpH2T9cCHOyW1TA.jpg"
+                width="600" />
+        </div>
+        <div class="card offer-card" routerLink="/offer-detail">
+            <img alt="Burger with fries and drink offer" class="card-img-top" height="200"
+                src="https://storage.googleapis.com/a1aa/image/V2ev6GqMhnUGViZFily9jtxoS32ea0h7d1eHJxODdR0bktqnA.jpg"
+                width="600" />
+        </div>
+        <div class="card offer-card" routerLink="/offer-detail">
+            <img alt="Ice cream dessert offer" class="card-img-top" height="200"
+                src="https://storage.googleapis.com/a1aa/image/YemwpzJ5RQ0eEUO6ircIBY2256UkkQFjk8FOesvyGXEXktqnA.jpg"
+                width="600" />
+        </div>
+    </div>
+    </ng-container>
+    <ng-container *ngIf="activeTab === 'rewards'">
+        <div class="container mt-4" style="padding: 0;">
+            <div class="reward-card" routerLink="/reward-detail">
+                <img alt="Image of a Wagyu Burger" height="60"
+                    src="https://storage.googleapis.com/a1aa/image/CUOT6JX76FZII9txciehDaZsFa8G9fP45B1VbeU8bZew1UVPB.jpg"
+                    width="60" />
+                <div class="details">
+                    <div style="display: flex;flex-direction: row;justify-content: space-between;" >
+                        <div class="title">
+                            Wagyu Burger
+                        </div>
+                        <div class="points">
+                            1.000 points
+                        </div>
+                    </div>
+
+                    <div class="subtitle">
+                        Claim your discount 30% daily now!
+                    </div>
+                </div>
+
+            </div>
+            <div class="reward-card" routerLink="/reward-detail">
+                <img alt="Image of a Wagyu Burger" height="60"
+                    src="https://storage.googleapis.com/a1aa/image/CUOT6JX76FZII9txciehDaZsFa8G9fP45B1VbeU8bZew1UVPB.jpg"
+                    width="60" />
+                <div class="details">
+                    <div style="display: flex;flex-direction: row;justify-content: space-between;">
+                        <div class="title">
+                            Wagyu Burger
+                        </div>
+                        <div class="points">
+                            1.000 points
+                        </div>
+                    </div>
+
+                    <div class="subtitle">
+                        Claim your discount 30% daily now!
+                    </div>
+                </div>
+
+            </div>
+            <div class="reward-card" routerLink="/reward-detail">
+                <img alt="Image of a Wagyu Burger" height="60"
+                    src="https://storage.googleapis.com/a1aa/image/CUOT6JX76FZII9txciehDaZsFa8G9fP45B1VbeU8bZew1UVPB.jpg"
+                    width="60" />
+                <div class="details">
+                    <div style="display: flex;flex-direction: row;justify-content: space-between;">
+                        <div class="title">
+                            Wagyu Burger
+                        </div>
+                        <div class="points">
+                            1.000 points
+                        </div>
+                    </div>
+
+                    <div class="subtitle">
+                        Claim your discount 30% daily now!
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="activeTab==='branches'">
+        <div class="container mt-4" style="padding: 0;">
+        <div class="branch-card">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="branch-title">King Faisal Branch</div>
+                <div class="branch-distance">1.2 km</div>
+            </div>
+            <div class="mt-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="branch-info">
+                        <div>Phone Number</div>
+                        <div><strong>9200 66111</strong></div>
+                    </div>
+                    <button class="btn btn-call"><i class="fas fa-phone-alt"></i> Call</button>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-2">
+                    <div class="branch-info">
+                        <div>Location</div>
+                        <div><strong>King Fahad Bran</strong></div>
+                    </div>
+                    <button class="btn btn-location"><i class="fas fa-map-marker-alt"></i> Open</button>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-2">
+                    <div class="branch-info">
+                        <div>Hours</div>
+                        <div><strong>24 hours</strong></div>
+                    </div>
+                    <button class="btn btn-hours"><i class="fas fa-circle"></i> Open</button>
+                </div>
+            </div>
+        </div>
+        <div class="branch-card">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="branch-title">King Faisal Branch</div>
+                <div class="branch-distance">1.2 km</div>
+            </div>
+            <div class="mt-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="branch-info">
+                        <div>Phone Number</div>
+                        <div><strong>9200 66111</strong></div>
+                    </div>
+                    <button class="btn btn-call"><i class="fas fa-phone-alt"></i> Call</button>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-2">
+                    <div class="branch-info">
+                        <div>Location</div>
+                        <div><strong>King Fahad Bran</strong></div>
+                    </div>
+                    <button class="btn btn-location"><i class="fas fa-map-marker-alt"></i> Open</button>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-2">
+                    <div class="branch-info">
+                        <div>Hours</div>
+                        <div><strong>24 hours</strong></div>
+                    </div>
+                    <button class="btn btn-hours"><i class="fas fa-circle"></i> Open</button>
+                </div>
+            </div>
+        </div>
+        <div class="branch-card">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="branch-title">King Faisal Branch</div>
+                <div class="branch-distance">1.2 km</div>
+            </div>
+            <div class="mt-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="branch-info">
+                        <div>Phone Number</div>
+                        <div><strong>9200 66111</strong></div>
+                    </div>
+                    <button class="btn btn-call"><i class="fas fa-phone-alt"></i> Call</button>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-2">
+                    <div class="branch-info">
+                        <div>Location</div>
+                        <div><strong>King Fahad Bran</strong></div>
+                    </div>
+                    <button class="btn btn-location"><i class="fas fa-map-marker-alt"></i> Open</button>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-2">
+                    <div class="branch-info">
+                        <div>Hours</div>
+                        <div><strong>24 hours</strong></div>
+                    </div>
+                    <button class="btn btn-hours"><i class="fas fa-circle"></i> Open</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </ng-container>
+    <ng-container *ngIf="activeTab==='reviews'">
+        <div class="container mt-4" style="padding: 0;">
+            <div class="review-card mb-4">
+                <div class="review-header">
+                 <img alt="Profile picture of reviewer" height="50" src="https://storage.googleapis.com/a1aa/image/NeAxbvBcsKW5V6k3Ho2OQPv5Iub4H3DkZ7B757ziTEzYxr6JA.jpg" width="50"/>
+                 <div>
+                  <div class="name">
+                   Rana Haroon
+                  </div>
+                  <div class="date">
+                   Nov 09, 2022 - 3 photos
+                  </div>
+                 </div>
+                 <div class="stars">
+                  <i class="fas fa-star">
+                  </i>
+                  <i class="fas fa-star">
+                  </i>
+                  <i class="fas fa-star">
+                  </i>
+                  <i class="fas fa-star">
+                  </i>
+                  <i class="fas fa-star-half-alt">
+                  </i>
+                 </div>
+                </div>
+                <div class="review-body">
+                 New branch of the renovated pizza hut. The decoration was good and clean. The food was good but the orange juice isn't fresh. There is an echo on the place and the workers are a little bit noisy, so I suggest adding some soft music.
+                </div>
+                <div class="review-images">
+                 <img alt="Image of a burger" height="60" src="https://storage.googleapis.com/a1aa/image/uXJXyPKy6C4RPR9roKeS9KJLS7kqvRZRvG3HXJuOI07Xxr6JA.jpg" width="60"/>
+                 <img alt="Image of a burger" height="60" src="https://storage.googleapis.com/a1aa/image/uXJXyPKy6C4RPR9roKeS9KJLS7kqvRZRvG3HXJuOI07Xxr6JA.jpg" width="60"/>
+                 <img alt="Image of a burger" height="60" src="https://storage.googleapis.com/a1aa/image/uXJXyPKy6C4RPR9roKeS9KJLS7kqvRZRvG3HXJuOI07Xxr6JA.jpg" width="60"/>
+                </div>
+               </div>
+            <div class="review-card">
+             <div class="review-header">
+              <img alt="Profile picture of reviewer" height="50" src="https://storage.googleapis.com/a1aa/image/NeAxbvBcsKW5V6k3Ho2OQPv5Iub4H3DkZ7B757ziTEzYxr6JA.jpg" width="50"/>
+              <div>
+               <div class="name">
+                Nora Ahmad
+               </div>
+               <div class="date">
+                Nov 09, 2022 - 3 photos
+               </div>
+              </div>
+              <div class="stars">
+               <i class="fas fa-star">
+               </i>
+               <i class="fas fa-star">
+               </i>
+               <i class="fas fa-star">
+               </i>
+               <i class="fas fa-star">
+               </i>
+               <i class="fas fa-star-half-alt">
+               </i>
+              </div>
+             </div>
+             <div class="review-body">
+              New branch of the renovated pizza hut. The decoration was good and clean. The food was good but the orange juice isn't fresh. There is an echo on the place and the workers are a little bit noisy, so I suggest adding some soft music.
+             </div>
+             <div class="review-images">
+              <img alt="Image of a burger" height="60" src="https://storage.googleapis.com/a1aa/image/uXJXyPKy6C4RPR9roKeS9KJLS7kqvRZRvG3HXJuOI07Xxr6JA.jpg" width="60"/>
+              <img alt="Image of a burger" height="60" src="https://storage.googleapis.com/a1aa/image/uXJXyPKy6C4RPR9roKeS9KJLS7kqvRZRvG3HXJuOI07Xxr6JA.jpg" width="60"/>
+              <img alt="Image of a burger" height="60" src="https://storage.googleapis.com/a1aa/image/uXJXyPKy6C4RPR9roKeS9KJLS7kqvRZRvG3HXJuOI07Xxr6JA.jpg" width="60"/>
+             </div>
+            </div>
+           </div>
+    </ng-container>
+</div>

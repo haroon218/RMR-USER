@@ -1,0 +1,38 @@
+/* Ensure the entire layout takes full height of the viewport */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+  .layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full height of the viewport */
+  }
+  
+  /* Sticky Header */
+  app-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure it stays above other elements */
+    background: #fff; /* Background color */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  }
+  
+  /* Scrollable Content */
+  .content {
+    margin-top: 24px;
+    flex: 1; /* Makes this section take up the remaining space */
+    overflow-y: auto; /* Enable scrolling when content overflows */
+  }
+  
+  /* Fixed Footer */
+  app-footer {
+    background: #f8f9fa; /* Footer background color */
+    padding: 10px 0px 0px 0px;
+    position: static;
+    text-align: center;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  }
+  

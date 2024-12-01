@@ -1,0 +1,200 @@
+.back-button {
+    color: #6c757d;
+    font-size: 1.2rem;
+    margin: 1rem;
+}
+.header-image {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    height: 75px;
+}
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-top: -50px;
+    border: 5px solid #fff;
+}
+.profile-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+.profile-description {
+    color: #6c757d;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+.nav-tabs {
+    margin-bottom: 8px;
+    border-radius: 8px;
+    overflow-y: hidden;
+    border: none;
+    background-color: #F3F4F6;
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    justify-content: space-between; /* Center tabs */
+    overflow-x: auto; /* Allow horizontal scrolling if necessary */
+}
+
+.nav-tabs .nav-link {
+    color:black;
+    border-radius: 8px;
+}
+.nav-link.active {
+    background-color: #6f42c1; /* Choose a color you like */
+    color: #6f42c1;
+  }
+  
+  .nav-link {
+    color: #6f42c1;
+  }
+  
+  .nav-link:hover {
+    background-color: #6f42c1;
+  }
+.offer-card {
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+.offer-card img {
+    border-radius: 10px;
+}
+.balance-card {
+    background: linear-gradient(135deg, #B4BBFC 0%, #E7D0F2 100%);
+    border-radius: 15px;
+    padding: 7px 16px;
+    color: #6D428F;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  .balance-card .balance-info {
+    font-size: 1rem;
+  }
+  .balance-card .points {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  .reward-card {
+    border: 1px dashed #d1e7dd;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+.reward-card img {
+    border-radius: 8px;
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+}
+.reward-card .details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.reward-card .details .title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #6f42c1;
+}
+.reward-card .details .subtitle {
+    font-size: 12px;
+    font-weight: 500;
+    
+    color: #6c757d;
+}
+.reward-card .points {
+    font-size: 15px;
+    font-weight: bold;
+    color: #6f42c1;
+}
+.branch-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px;
+    max-width: 400px;
+    margin: 20px auto;
+    background-color: #fff;
+}
+.branch-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #6f42c1;
+}
+.branch-distance {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+.branch-info {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+.branch-info strong {
+    color: #343a40;
+}
+.btn-call, .btn-location, .btn-hours {
+    font-size: 0.875rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+.btn-call {
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+.btn-location {
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+.btn-hours {
+    background-color: #d4edda;
+    color: #155724;
+}
+.btn-hours .fa-circle {
+    color: #28a745;
+}
+.review-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #fff;
+}
+.review-header {
+    display: flex;
+    align-items: center;
+}
+.review-header img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+.review-header .name {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.review-header .date {
+    color: #888;
+    font-size: 0.9em;
+}
+.review-header .stars {
+    margin-left: auto;
+    color: #6c757d;
+}
+.review-body {
+    margin-top: 10px;
+    font-size: 0.95em;
+    color: #333;
+}
+.review-images {
+    margin-top: 10px;
+}
+.review-images img {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
