@@ -14,8 +14,11 @@
     SEO and social media marketing to content creation and PPC advertising, they have the expertise and resources to
     handle our diverse marketing needs.
 </div>
-
-<div class="navbar">
+<div class="mb-3"  *ngIf="!loginUser" >
+    <img src="/assets/Logo.svg" alt="">
+    <span>RMR</span>
+</div>
+<div class="navbar" *ngIf="loginUser">
     <ul class="navbar-nav">
         <li class="nav-item">
             <a class="nav-link" routerLink="/home" routerLinkActive="active-link"

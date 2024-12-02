@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="margin-top: 16px;">
     <div class="balance-card">
         <div>
             <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -9,7 +9,7 @@
                         <span class="fas fa-info-circle"></span>
                     </p>
                     <p class="points" style="margin: 0;">
-                        200
+                        {{wallet.length>0?wallet:'0'}}
                         <span style="font-size: 14px; font-weight: 400; line-height: 20px;">
                             Points
                         </span>
@@ -73,66 +73,28 @@
         </div>
     </div>
     <div class="container mt-4" style="padding: 0;">
-        <div class="reward-card" routerLink="/reward-detail">
+        <div class="reward-card" *ngFor="let offer of rewards" routerLink="/reward-detail">
             <img alt="Image of a Wagyu Burger" height="60"
-                src="https://storage.googleapis.com/a1aa/image/CUOT6JX76FZII9txciehDaZsFa8G9fP45B1VbeU8bZew1UVPB.jpg"
+               [src]="offer.images[0].url"
                 width="60" />
             <div class="details">
                 <div style="display: flex;flex-direction: row;justify-content: space-between;">
                     <div class="title">
-                        Wagyu Burger
+                       {{offer.name}}
                     </div>
                     <div class="points">
-                        1.000 points
+                        {{offer.points}}  <span style="font-size: 9px;">points</span>
                     </div>
                 </div>
                 
                 <div class="subtitle">
-                    Claim your discount 30% daily now!
+                    {{offer.description}}
+
                 </div>
             </div>
 
         </div>
-        <div class="reward-card" routerLink="/reward-detail">
-            <img alt="Image of a Wagyu Burger" height="60"
-                src="https://storage.googleapis.com/a1aa/image/CUOT6JX76FZII9txciehDaZsFa8G9fP45B1VbeU8bZew1UVPB.jpg"
-                width="60" />
-            <div class="details">
-                <div style="display: flex;flex-direction: row;justify-content: space-between;">
-                    <div class="title">
-                        Wagyu Burger
-                    </div>
-                    <div class="points">
-                        1.000 points
-                    </div>
-                </div>
-                
-                <div class="subtitle">
-                    Claim your discount 30% daily now!
-                </div>
-            </div>
-
-        </div>
-        <div class="reward-card" routerLink="/reward-detail">
-            <img alt="Image of a Wagyu Burger" height="60"
-                src="https://storage.googleapis.com/a1aa/image/CUOT6JX76FZII9txciehDaZsFa8G9fP45B1VbeU8bZew1UVPB.jpg"
-                width="60" />
-            <div class="details">
-                <div style="display: flex;flex-direction: row;justify-content: space-between;">
-                    <div class="title">
-                        Wagyu Burger
-                    </div>
-                    <div class="points">
-                        1.000 points
-                    </div>
-                </div>
-                
-                <div class="subtitle">
-                    Claim your discount 30% daily now!
-                </div>
-            </div>
-
-        </div>
+      
     </div>
     <div class="section-title">
         <p style="color: #3D1D5E;margin: 0;">

@@ -22,6 +22,7 @@ html, body {
   
   /* Scrollable Content */
   .content {
+    margin-top: 24px;
     flex: 1; /* Makes this section take up the remaining space */
     overflow-y: auto; /* Enable scrolling when content overflows */
   }

@@ -1,79 +1,17 @@
 <div class="card">
   <div class="card-header">
     <img alt="Company logo with a purple and blue shield-like design" height="50" src="/assets/Logo.svg" />
-    <p class="mb-0">Join RMR Loyalty Program</p>
+    <p class="mb-0">Welcome Back</p>
   </div>
   <div class="card-body">
-    <h5 class="card-title">{{ isRegisterMode ? 'Sign Up' : 'Login' }}</h5>
-    <p *ngIf="isRegisterMode">
-      Start earning points on every purchase at our partner locations. Register now to access a world of exclusive rewards and offers.
-    </p>
-    <p *ngIf="!isRegisterMode">
+    <h5 class="card-title">Login to RMR</h5>
+  
+    <p >
       Log in to your account to review your points balance, discover new rewards, and update your preferences.
     </p>
+   
     <form
-      *ngIf="isRegisterMode"
-      [formGroup]="signupForm"
-      (ngSubmit)="onRegisterSubmit()"
-    >
-      <div class="mb-3">
-        <label class="form-label" for="username">User Name <span class="text-danger">*</span></label>
-        <input class="form-control" id="username" formControlName="name" type="text" />
-        <small *ngIf="signupForm.get('name')?.touched && signupForm.get('name')?.invalid" class="text-danger">
-          Name is required.
-        </small>
-      </div>
-      <div class="mb-3">
-        <label class="form-label" for="phone">Phone Number <span class="text-danger">*</span></label>
-        <div class="input-group">
-          <input class="form-control" id="phone" formControlName="mobile" type="text" />
-          <span class="input-group-text">+966</span>
-        </div>
-        <small *ngIf="signupForm.get('mobile')?.touched && signupForm.get('mobile')?.invalid" class="text-danger">
-          Phone number is required.
-        </small>
-      </div>
-      <div class="mb-3">
-        <label class="form-label" for="dob">Date of Birth</label>
-        <input class="form-control" id="dob" formControlName="date_of_birth" type="date" />
-      </div>
-      <div class="mb-3">
-        <label class="form-label" for="gender">Gender</label>
-        <select class="form-select" id="gender" formControlName="gender">
-          <option value="">Select your gender</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label class="form-label" for="password">Password <span class="text-danger">*</span></label>
-        <input class="form-control" id="password" formControlName="password" type="password" />
-        <small *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.invalid" class="text-danger">
-          Password is required.
-        </small>
-      </div>
-      <div class="mb-3">
-        <label class="form-label" for="confirm-password">Confirm Password <span class="text-danger">*</span></label>
-        <input class="form-control" id="confirm-password" formControlName="confirm_password" type="password" />
-        <small
-          *ngIf="signupForm.get('confirm_password')?.touched && signupForm.get('confirm_password')?.invalid"
-          class="text-danger"
-        >
-          Confirmation password is required.
-        </small>
-      </div>
-      <div class="mb-3">
-        <label>
-          <input type="checkbox" formControlName="marketing_chk" />
-          I agree to receive marketing emails.
-        </label>
-      </div>
-      <div class="d-grid">
-        <button class="btn btn-primary" [disabled]="signupForm.invalid" type="submit">Sign Up</button>
-      </div>
-    </form>
-    <form
-      *ngIf="!isRegisterMode"
+      
       [formGroup]="loginForm"
       (ngSubmit)="onLoginSubmit()"
     >
@@ -88,9 +26,9 @@
       <button class="btn btn-primary w-100" type="submit">Login</button>
     </form>
     <p class="text-center mt-3">
-      {{ isRegisterMode ? 'Already have an account?' : 'Don\'t have an account?' }}
-      <a href="javascript:void(0)" (click)="toggleMode()">
-        {{ isRegisterMode ? 'Login' : 'Register' }}
+      Don't have an account?
+      <a  routerLink="/register">
+        Register
       </a>
     </p>
   </div>

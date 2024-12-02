@@ -1,0 +1,72 @@
+.back-button {
+    color: #6c757d;
+    font-size: 1.2rem;
+    margin: 1rem;
+}
+.header-image {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    height: 75px;
+}
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-top: -50px;
+    border: 5px solid #fff;
+}
+.profile-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+.profile-description {
+    color: #6c757d;
+    font-size: 1rem;
+}
+.star-rating {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+  }
+  
+  .star {
+    font-size: 36px;
+    color: #ccc;
+    cursor: pointer;
+  }
+  
+  .star.filled {
+    color: #6d428f !important;
+  }
+  .review-box {
+    width: 100%;
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+  }
+  .rating-text {
+    font-size: 18px;
+    color: #6d428f;
+  }
+  .submit-button {
+    margin-bottom: 50px;
+    background-color: #6d428f;
+    color: white;
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .error {
+    color: red;
+    margin-bottom: 5px;
+    font-size: 12px;
+    display: flex;
+  }

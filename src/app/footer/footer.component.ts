@@ -1,17 +1,28 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Html5QrcodeScanner } from 'html5-qrcode';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-footer',
   standalone:true,
-  imports:[RouterModule],
+  imports:[RouterModule,CommonModule],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
   showScanner = false;
   qrScanner!: Html5QrcodeScanner;
+  loginUser:any=false
+  constructor(private authservice:AuthService,){
+    
+  }
+  ngOnInit(): void {
+    this.authservice.isLoggedIn$.subscribe((status) => {
+      this.loginUser = status;
+    });
+  }
 
   openScanner() {
     this.showScanner = true;

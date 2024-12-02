@@ -1,0 +1,54 @@
+<form [formGroup]="ratingForm" (ngSubmit)="submitRating()">
+<div class="container" style="margin-top: 16px;">
+<div class="back-button" routerLink="/home">
+    <i class="fas fa-arrow-left" style="border-radius: 50%;
+ background-color: #6D428F;
+ color: white;
+ padding: 4px;
+
+ font-size: 13px;
+ align-items: end;
+ width: 20px;
+ height: 20px;">
+    </i>
+    Back
+</div>
+<img alt="Pizza with various toppings" class="header-image" height="75"
+    src="https://storage.googleapis.com/a1aa/image/oWKa7vq0n67ePK7ydpURy10xUdXCDnUHTKiqf2JsOwjKyW1TA.jpg" />
+<div class="text-center">
+    <img alt="Pizza Hut logo" class="profile-image" height="100"
+        src="https://storage.googleapis.com/a1aa/image/VUo78GSkg7ahPBHYAthc1CqPlJRnLP3jSVS2ID9qmNBisV9E.jpg"
+        width="100" />
+    <div class="profile-name">
+        {{companyName}}
+    </div>
+    <div class="profile-description">
+        Plz rate our service
+    </div>
+    <div class="star-rating">
+        <span
+          class="star"
+          *ngFor="let star of stars; let i = index"
+          [class.filled]="i < ratingForm.value.rating"
+          (click)="setRating(i + 1)"
+        >
+          ★
+        </span>
+      </div>
+      <div *ngIf="ratingForm.get('rating')?.touched && ratingForm.get('rating')?.hasError('min')" class="error">
+        Please select a rating.
+      </div>
+    <p class="rating-text">{{ ratingText }}</p>
+
+    <textarea  formControlName="body" class="review-box" placeholder="Write review"></textarea>
+    <div *ngIf="ratingForm.get('body')?.touched && ratingForm.get('body')?.hasError('required')" class="error">
+        Review is required.
+      </div>
+      <div *ngIf="ratingForm.get('body')?.touched && ratingForm.get('body')?.hasError('minlength')" class="error">
+        Review must be at least 10 characters long.
+      </div>
+
+  <button class="submit-button">Submit</button>
+</div>
+</div>
+</form>

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="margin-top: 16px;">
     <div class="balance-card">
         <div>
             <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -9,7 +9,7 @@
                         <span class="fas fa-info-circle"></span>
                     </p>
                     <p class="points" style="margin: 0;">
-                        200
+                        {{wallet.length>0?wallet:'0'}}
                         <span style="font-size: 14px; font-weight: 400; line-height: 20px;">
                             Points
                         </span>
@@ -42,7 +42,7 @@
             src="https://storage.googleapis.com/a1aa/image/VUo78GSkg7ahPBHYAthc1CqPlJRnLP3jSVS2ID9qmNBisV9E.jpg"
             width="100" />
         <div class="profile-name">
-            Pizza Hut
+            {{profileData.row.name}}
         </div>
         <div class="profile-description">
             serves fresh pizzas with various toppings in a welcoming atmosphere
@@ -78,246 +78,114 @@
 
     <ng-container *ngIf="activeTab === 'offer'">
         <div class="container mt-4" style="padding: 0;">
-        <div class="card offer-card" routerLink="/offer-detail">
-            <img alt="Burger with cheese and drink offer" class="card-img-top" height="200"
-                src="https://storage.googleapis.com/a1aa/image/SdExbI1adu6mFVLU6182fdlHRCD1FIKeaUmpH2T9cCHOyW1TA.jpg"
-                width="600" />
+            <div class="card offer-card" *ngFor="let offer of offers" [routerLink]="['/offer-detail']"
+                [queryParams]="{ id: offer.id }">
+                <img alt="Burger with cheese and drink offer" class="card-img-top" height="200"
+                    [src]="offer.images[0].url" width="600" />
+            </div>
+
         </div>
-        <div class="card offer-card" routerLink="/offer-detail">
-            <img alt="Burger with fries and drink offer" class="card-img-top" height="200"
-                src="https://storage.googleapis.com/a1aa/image/V2ev6GqMhnUGViZFily9jtxoS32ea0h7d1eHJxODdR0bktqnA.jpg"
-                width="600" />
-        </div>
-        <div class="card offer-card" routerLink="/offer-detail">
-            <img alt="Ice cream dessert offer" class="card-img-top" height="200"
-                src="https://storage.googleapis.com/a1aa/image/YemwpzJ5RQ0eEUO6ircIBY2256UkkQFjk8FOesvyGXEXktqnA.jpg"
-                width="600" />
-        </div>
-    </div>
     </ng-container>
     <ng-container *ngIf="activeTab === 'rewards'">
         <div class="container mt-4" style="padding: 0;">
-            <div class="reward-card" routerLink="/reward-detail">
-                <img alt="Image of a Wagyu Burger" height="60"
-                    src="https://storage.googleapis.com/a1aa/image/CUOT6JX76FZII9txciehDaZsFa8G9fP45B1VbeU8bZew1UVPB.jpg"
-                    width="60" />
-                <div class="details">
-                    <div style="display: flex;flex-direction: row;justify-content: space-between;" >
-                        <div class="title">
-                            Wagyu Burger
-                        </div>
-                        <div class="points">
-                            1.000 points
-                        </div>
-                    </div>
-
-                    <div class="subtitle">
-                        Claim your discount 30% daily now!
-                    </div>
-                </div>
-
-            </div>
-            <div class="reward-card" routerLink="/reward-detail">
-                <img alt="Image of a Wagyu Burger" height="60"
-                    src="https://storage.googleapis.com/a1aa/image/CUOT6JX76FZII9txciehDaZsFa8G9fP45B1VbeU8bZew1UVPB.jpg"
-                    width="60" />
+            <div class="reward-card" *ngFor="let reward of rewards" routerLink="/reward-detail">
+                <img alt="Image of a Wagyu Burger" height="60" [src]="reward.images[0].url" width="60" />
                 <div class="details">
                     <div style="display: flex;flex-direction: row;justify-content: space-between;">
                         <div class="title">
-                            Wagyu Burger
+                            {{reward.name}}
                         </div>
                         <div class="points">
-                            1.000 points
+                            {{reward.points}}
                         </div>
                     </div>
 
                     <div class="subtitle">
-                        Claim your discount 30% daily now!
+                        {{reward.description}}
                     </div>
                 </div>
 
             </div>
-            <div class="reward-card" routerLink="/reward-detail">
-                <img alt="Image of a Wagyu Burger" height="60"
-                    src="https://storage.googleapis.com/a1aa/image/CUOT6JX76FZII9txciehDaZsFa8G9fP45B1VbeU8bZew1UVPB.jpg"
-                    width="60" />
-                <div class="details">
-                    <div style="display: flex;flex-direction: row;justify-content: space-between;">
-                        <div class="title">
-                            Wagyu Burger
-                        </div>
-                        <div class="points">
-                            1.000 points
-                        </div>
-                    </div>
 
-                    <div class="subtitle">
-                        Claim your discount 30% daily now!
-                    </div>
-                </div>
-
-            </div>
         </div>
     </ng-container>
     <ng-container *ngIf="activeTab==='branches'">
         <div class="container mt-4" style="padding: 0;">
-        <div class="branch-card">
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="branch-title">King Faisal Branch</div>
-                <div class="branch-distance">1.2 km</div>
-            </div>
-            <div class="mt-3">
+            <div class="branch-card" *ngFor="let branch of branches">
                 <div class="d-flex justify-content-between align-items-center">
-                    <div class="branch-info">
-                        <div>Phone Number</div>
-                        <div><strong>9200 66111</strong></div>
-                    </div>
-                    <button class="btn btn-call"><i class="fas fa-phone-alt"></i> Call</button>
+                    <div class="branch-title">{{branch.name}}</div>
+                    <div class="branch-distance">1.2 km</div>
                 </div>
-                <div class="d-flex justify-content-between align-items-center mt-2">
-                    <div class="branch-info">
-                        <div>Location</div>
-                        <div><strong>King Fahad Bran</strong></div>
+                <div class="mt-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="branch-info">
+                            <div>Phone Number</div>
+                            <div><strong>{{branch.telephone_no}}</strong></div>
+                        </div>
+                        <button class="btn btn-call"><i class="fas fa-phone-alt"></i> Call</button>
                     </div>
-                    <button class="btn btn-location"><i class="fas fa-map-marker-alt"></i> Open</button>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-2">
-                    <div class="branch-info">
-                        <div>Hours</div>
-                        <div><strong>24 hours</strong></div>
+                    <div class="d-flex justify-content-between align-items-center mt-2">
+                        <div class="branch-info">
+                            <div>Location</div>
+                            <div><strong>{{branch.address}}</strong></div>
+                        </div>
+                        <button class="btn btn-location"><i class="fas fa-map-marker-alt"></i> Open</button>
                     </div>
-                    <button class="btn btn-hours"><i class="fas fa-circle"></i> Open</button>
+                    <div class="d-flex justify-content-between align-items-center mt-2">
+                        <div class="branch-info">
+                            <div>Hours</div>
+                            <div><strong>24 hours</strong></div>
+                        </div>
+                        <button class="btn btn-hours"><i class="fas fa-circle"></i> Open</button>
+                    </div>
                 </div>
             </div>
+
+
         </div>
-        <div class="branch-card">
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="branch-title">King Faisal Branch</div>
-                <div class="branch-distance">1.2 km</div>
-            </div>
-            <div class="mt-3">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="branch-info">
-                        <div>Phone Number</div>
-                        <div><strong>9200 66111</strong></div>
-                    </div>
-                    <button class="btn btn-call"><i class="fas fa-phone-alt"></i> Call</button>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-2">
-                    <div class="branch-info">
-                        <div>Location</div>
-                        <div><strong>King Fahad Bran</strong></div>
-                    </div>
-                    <button class="btn btn-location"><i class="fas fa-map-marker-alt"></i> Open</button>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-2">
-                    <div class="branch-info">
-                        <div>Hours</div>
-                        <div><strong>24 hours</strong></div>
-                    </div>
-                    <button class="btn btn-hours"><i class="fas fa-circle"></i> Open</button>
-                </div>
-            </div>
-        </div>
-        <div class="branch-card">
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="branch-title">King Faisal Branch</div>
-                <div class="branch-distance">1.2 km</div>
-            </div>
-            <div class="mt-3">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="branch-info">
-                        <div>Phone Number</div>
-                        <div><strong>9200 66111</strong></div>
-                    </div>
-                    <button class="btn btn-call"><i class="fas fa-phone-alt"></i> Call</button>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-2">
-                    <div class="branch-info">
-                        <div>Location</div>
-                        <div><strong>King Fahad Bran</strong></div>
-                    </div>
-                    <button class="btn btn-location"><i class="fas fa-map-marker-alt"></i> Open</button>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-2">
-                    <div class="branch-info">
-                        <div>Hours</div>
-                        <div><strong>24 hours</strong></div>
-                    </div>
-                    <button class="btn btn-hours"><i class="fas fa-circle"></i> Open</button>
-                </div>
-            </div>
-        </div>
-    </div>
     </ng-container>
     <ng-container *ngIf="activeTab==='reviews'">
         <div class="container mt-4" style="padding: 0;">
-            <div class="review-card mb-4">
+            <div class="review-card mb-4" *ngFor="let review of reviews">
                 <div class="review-header">
-                 <img alt="Profile picture of reviewer" height="50" src="https://storage.googleapis.com/a1aa/image/NeAxbvBcsKW5V6k3Ho2OQPv5Iub4H3DkZ7B757ziTEzYxr6JA.jpg" width="50"/>
-                 <div>
-                  <div class="name">
-                   Rana Haroon
-                  </div>
-                  <div class="date">
-                   Nov 09, 2022 - 3 photos
-                  </div>
-                 </div>
-                 <div class="stars">
-                  <i class="fas fa-star">
-                  </i>
-                  <i class="fas fa-star">
-                  </i>
-                  <i class="fas fa-star">
-                  </i>
-                  <i class="fas fa-star">
-                  </i>
-                  <i class="fas fa-star-half-alt">
-                  </i>
-                 </div>
+                    <img alt="Profile picture of reviewer" height="50"
+                        src="https://storage.googleapis.com/a1aa/image/NeAxbvBcsKW5V6k3Ho2OQPv5Iub4H3DkZ7B757ziTEzYxr6JA.jpg"
+                        width="50" />
+                    <div>
+                        <div class="name">
+                            {{review.name}}
+                        </div>
+                        <div class="date">
+                            {{review.created_at | date: 'MMM dd, yyyy'}}
+                        </div>
+                    </div>
+                    <div class="stars">
+                        <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                            <i
+                              [class.fas]="i + 1 <= review.rating"
+                              [class.fa-star]="i + 1 <= review.rating"
+                              [class.fa-star-half-alt]="i + 0.5 === review.rating"
+                              [class.far]="i + 1 > review.rating"
+                            ></i>
+                          </ng-container>
+                    </div>
                 </div>
                 <div class="review-body">
-                 New branch of the renovated pizza hut. The decoration was good and clean. The food was good but the orange juice isn't fresh. There is an echo on the place and the workers are a little bit noisy, so I suggest adding some soft music.
+                   {{review.body}}
                 </div>
-                <div class="review-images">
-                 <img alt="Image of a burger" height="60" src="https://storage.googleapis.com/a1aa/image/uXJXyPKy6C4RPR9roKeS9KJLS7kqvRZRvG3HXJuOI07Xxr6JA.jpg" width="60"/>
-                 <img alt="Image of a burger" height="60" src="https://storage.googleapis.com/a1aa/image/uXJXyPKy6C4RPR9roKeS9KJLS7kqvRZRvG3HXJuOI07Xxr6JA.jpg" width="60"/>
-                 <img alt="Image of a burger" height="60" src="https://storage.googleapis.com/a1aa/image/uXJXyPKy6C4RPR9roKeS9KJLS7kqvRZRvG3HXJuOI07Xxr6JA.jpg" width="60"/>
-                </div>
-               </div>
-            <div class="review-card">
-             <div class="review-header">
-              <img alt="Profile picture of reviewer" height="50" src="https://storage.googleapis.com/a1aa/image/NeAxbvBcsKW5V6k3Ho2OQPv5Iub4H3DkZ7B757ziTEzYxr6JA.jpg" width="50"/>
-              <div>
-               <div class="name">
-                Nora Ahmad
-               </div>
-               <div class="date">
-                Nov 09, 2022 - 3 photos
-               </div>
-              </div>
-              <div class="stars">
-               <i class="fas fa-star">
-               </i>
-               <i class="fas fa-star">
-               </i>
-               <i class="fas fa-star">
-               </i>
-               <i class="fas fa-star">
-               </i>
-               <i class="fas fa-star-half-alt">
-               </i>
-              </div>
-             </div>
-             <div class="review-body">
-              New branch of the renovated pizza hut. The decoration was good and clean. The food was good but the orange juice isn't fresh. There is an echo on the place and the workers are a little bit noisy, so I suggest adding some soft music.
-             </div>
-             <div class="review-images">
-              <img alt="Image of a burger" height="60" src="https://storage.googleapis.com/a1aa/image/uXJXyPKy6C4RPR9roKeS9KJLS7kqvRZRvG3HXJuOI07Xxr6JA.jpg" width="60"/>
-              <img alt="Image of a burger" height="60" src="https://storage.googleapis.com/a1aa/image/uXJXyPKy6C4RPR9roKeS9KJLS7kqvRZRvG3HXJuOI07Xxr6JA.jpg" width="60"/>
-              <img alt="Image of a burger" height="60" src="https://storage.googleapis.com/a1aa/image/uXJXyPKy6C4RPR9roKeS9KJLS7kqvRZRvG3HXJuOI07Xxr6JA.jpg" width="60"/>
-             </div>
+                <!-- <div class="review-images">
+                    <img alt="Image of a burger" height="60"
+                        src="https://storage.googleapis.com/a1aa/image/uXJXyPKy6C4RPR9roKeS9KJLS7kqvRZRvG3HXJuOI07Xxr6JA.jpg"
+                        width="60" />
+                    <img alt="Image of a burger" height="60"
+                        src="https://storage.googleapis.com/a1aa/image/uXJXyPKy6C4RPR9roKeS9KJLS7kqvRZRvG3HXJuOI07Xxr6JA.jpg"
+                        width="60" />
+                    <img alt="Image of a burger" height="60"
+                        src="https://storage.googleapis.com/a1aa/image/uXJXyPKy6C4RPR9roKeS9KJLS7kqvRZRvG3HXJuOI07Xxr6JA.jpg"
+                        width="60" />
+                </div> -->
             </div>
-           </div>
+
+        </div>
     </ng-container>
 </div>

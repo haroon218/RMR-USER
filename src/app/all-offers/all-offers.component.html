@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="margin-top: 16px;">
     <div class="balance-card">
         <div>
           <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -9,7 +9,7 @@
                 <span class="fas fa-info-circle"></span>
               </p>
               <p class="points" style="margin: 0;">
-                200
+                {{wallet.length>0?wallet:'0'}}
                 <span style="font-size: 14px; font-weight: 400; line-height: 20px;">
                   Points
                 </span>
@@ -64,22 +64,20 @@
       </div>
      </div>
     </div>
-    <div class="card" routerLink="/offer-detail">
+    <div *ngIf="!isLoading; else shimmerEffect">
+    <div class="card" *ngFor="let offer of offers" [routerLink]="['/offer-detail']" [queryParams]="{ id: offer.id }"
+    >
         <button class="share-button">
             <img src="/assets/share.png" alt="">
             <span style="margin-left: 5px;">Share</span>      </button>
-     <img alt="Triple Cheeseburger with price 19 ريال" class="offer-img" height="180" src="https://storage.googleapis.com/a1aa/image/3yni9A9qYpKdD5ekVuFV81fxXTe2PoUVuNXmYMijBA30GnqnA.jpg" width="600"/>
+     <img alt="Triple Cheeseburger with price 19 ريال" class="offer-img" height="180" [src]="offer.images[0].url" width="600"/>
     </div>
-    <div class="card">
-     <button class="share-button">
-        <img src="/assets/share.png" alt="">
-        <span style="margin-left: 5px;">Share</span>      </button>
-     <img alt="Meal with fries and Sprite with 50% discount" class="offer-img" height="180" src="https://storage.googleapis.com/a1aa/image/zpQvVyizeVVkFaWQDlMHtAdUwBeL1YzlKC11zdPeZ2uwGnqnA.jpg" width="600"/>
     </div>
-    <div class="card">
-        <button class="share-button">
-            <img src="/assets/share.png" alt="">
-            <span style="margin-left: 5px;">Share</span>      </button>
-     <img alt="Daim dessert with price 5 SR" height="180" class="offer-img" src="https://storage.googleapis.com/a1aa/image/7rLIczA69NawPBUhHbnD7oIUFPK0KWeMG8xo5n3TAVRuxp6JA.jpg" width="600"/>
-    </div>
+    <ng-template #shimmerEffect>
+      <div class="shimmer-wrapper">
+        <div class="shimmer"></div>
+        <div class="shimmer"></div>
+        <div class="shimmer"></div>
+      </div>
+    </ng-template>
    </div>

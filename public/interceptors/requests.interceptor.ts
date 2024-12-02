@@ -2,7 +2,7 @@ import { HttpInterceptorFn } from '@angular/common/http';
 
 export const requestsInterceptor: HttpInterceptorFn = (req, next) => {
   const token = localStorage.getItem('token'); // Replace 'token' with your actual key used to store the token
-
+debugger
   if (token) {
     const clonedRequest = req.clone({
       setHeaders: {

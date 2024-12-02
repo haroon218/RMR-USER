@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -17,9 +19,9 @@ export class LoginComponent {
   isRegisterMode: boolean = true; // Toggle between register and login modes
 
   constructor(
-    private fb: FormBuilder,
+    private fb: FormBuilder,private authservice:AuthService,
     private http: HttpClient,
-    private router: Router
+    private router: Router,private toastr:ToastrService
   ) {
     // Initialize signup form
     this.signupForm = this.fb.group({
@@ -27,7 +29,7 @@ export class LoginComponent {
       mobile: ['', [Validators.required]],
       date_of_birth: [''],
       gender: [''],
-      company_id: ['2'], // Default value for company ID
+      company_id: [''], // Default value for company ID
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirm_password: ['', [Validators.required, Validators.minLength(8)]],
       marketing_chk: [false],
@@ -57,8 +59,7 @@ export class LoginComponent {
       }
 
       // Make API call to register the user
-      this.http
-        .post('https://rmr-api.sohoby.com/public/api/user/register', formValue)
+      this.authservice.login(formValue)
         .subscribe({
           next: (response: any) => {
             console.log('User registered:', response);
@@ -77,22 +78,20 @@ export class LoginComponent {
   onLoginSubmit() {
     if (this.loginForm.valid) {
       // Make API call to log in the user
-      this.http
-        .post('https://rmr-api.sohoby.com/public/api/user/login', this.loginForm.value)
+       this.authservice.login(this.loginForm.value)
         .subscribe({
           next: (response: any) => {
-            console.log('Login successful:', response);
-            localStorage.setItem('token', JSON.stringify(response.data.token));
-
-            // Store user details in localStorage
-            localStorage.setItem('user', JSON.stringify(response.data.user));
-
-            // Redirect to the home route
-            this.router.navigate(['/home']);
+            if(response.success){
+              this.toastr.success(response.message,'Success')
+              localStorage.setItem('token', response.data.token);
+              localStorage.setItem('user', JSON.stringify(response.data.user));
+              this.authservice.setLoginStatus(true);
+              this.router.navigate(['/review']);
+            }
+           
           },
           error: (err: any) => {
-            console.error('Login error:', err);
-            alert('Login failed. Please check your credentials.');
+            this.toastr.error(err.message,'Error')
           },
         });
     }

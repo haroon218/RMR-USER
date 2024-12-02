@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-reward-detail',
@@ -8,8 +9,18 @@ import { Location } from '@angular/common';
   styleUrl: './reward-detail.component.css'
 })
 export class RewardDetailComponent {
-  constructor(private location: Location) {}
+  wallet:any
+  constructor(private location: Location,private service:AuthService) {
+    this.userinfo()
+  }
   goBack() {
     this.location.back();
+  }
+  userinfo(){
+    this.service.userInfo().subscribe({
+      next: (res) => {
+        this.wallet=res.data.point_wallets
+      }
+    })
   }
 }
