@@ -17,7 +17,7 @@
             <span class="fas fa-info-circle"></span>
           </p>
           <p class="points" style="margin: 0;">
-            {{wallet.length>0?wallet:'0'}}
+            {{wallet?.length>0?wallet[0].points:'0'}}
             <span style="font-size: 14px; font-weight: 400; line-height: 20px;">
               Points
             </span>
@@ -68,23 +68,12 @@
       </a>
     </div>
     <div class="d-flex flex-wrap">
-      <span class="badge">
-        All
-      </span>
-      <span class="badge">
-        Fast food
-      </span>
-      <span class="badge">
-        seafood
-      </span>
-      <span class="badge">
-        Healthy
-      </span>
-      <span class="badge">
-        Type
+      <span *ngFor="let category of categories" class="badge">
+        {{ category.name }}
       </span>
     </div>
-    <div class="offer-card mt-3" [routerLink]="['/offer-detail']" [queryParams]="{ id: homeView.id }">
+    
+    <div class="offer-card mt-3" [routerLink]="['/offer-detail']" [queryParams]="{ id: homeView.offers[0].id }">
       <img
         alt="McDonald's offer image"
         style="width: 100%; border-radius: 10px;"
@@ -170,13 +159,13 @@
         See All
       </a>
     </div>
-    <div class="points-card">
+    <div class="points-card" [routerLink]="['/survey-detail']" [queryParams]="{ id: homeView.surveys[0].id }">
       <img alt="Get more points image" height="200"
         src="https://storage.googleapis.com/a1aa/image/g7vll9NkIf1iXypqPgxZsjlm0HGO8yDGeoEgIfLIlqJk0hqnA.jpg"
         width="300" />
       <div class="points-info">
         <p>
-          Claim your discount 30% daily now!
+          {{homeView.surveys[0].name}}
         </p>
         <p class="price">
           get 1.000 Points

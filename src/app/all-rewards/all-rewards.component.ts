@@ -13,21 +13,44 @@ export class AllRewardsComponent {
   rewards:any
   wallet:any
   isLoading=true
-  constructor(private location: Location,private authService:AuthService) {
-    this.homeScreen();
+  categories :any= [
+  
+  ];   constructor(private location: Location,private authService:AuthService) {
+    this.loadHomeScreen();
     this.userinfo()
+    this.getCategories()
   }
   goBack() {
     this.location.back();
   }
-  homeScreen(){
+  getCategories() {
+    this.authService.getCtegories().subscribe({
+      next: (res) => {
+        debugger;
+        // Replace category images with a dummy URL
+        this.categories = res.data.data
+      },
+      error: (err) => {
+        console.error('Error fetching categories', err);
+      },
+    });
+  }
+  
+  loadHomeScreen(categoryId?: string){
     debugger
-    this.authService.homeScreen().subscribe({
+    this.isLoading=true
+
+    this.authService.homeScreen(categoryId).subscribe({
       next: (res) => {
         this.rewards=res.data.rewards;
         this.isLoading=false
+        // this.userinfo()
+
       }
     })
+      }
+      onCategoryClick(categoryId: string): void {
+        this.loadHomeScreen(categoryId);
       }
       userinfo(){
         this.authService.userInfo().subscribe({

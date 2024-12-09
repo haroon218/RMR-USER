@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { ReviewComponent } from './review/review.component';
+import { SurveyComponent } from './survey/survey.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: "register", pathMatch: 'full' },
@@ -20,6 +21,8 @@ export const routes: Routes = [
     { path: 'reward-detail', component: RewardDetailComponent },
     { path: 'profile', component: ProfileComponent },
     { path: 'review', component: ReviewComponent },
+    { path: 'survey-detail', component: SurveyComponent },
+
 
 
 

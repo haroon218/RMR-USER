@@ -54,11 +54,26 @@ export class AuthService {
   checkExist(credentials:any){
     return this.http.post<any>(`${Constants.baseApi}/check-detials`,credentials)
   }
+  submitSurvey(payLoad:any){
+    return this.http.post<any>(`${Constants.baseApi}/survey-submit`,payLoad)
+  }
   addreview(credentials:any){
     return this.http.post<any>(`${Constants.baseApi}/review-store`,credentials)
   }
-  homeScreen(): Observable<any> {
-    return this.http.get<any>(`${Constants.baseApi}/home`);
+  homeScreen(categoryId?: string): Observable<any> {
+    let httpParams = new HttpParams();
+    if (categoryId) {
+      httpParams = httpParams.set('category_id', categoryId);
+    }
+
+    return this.http.get<any>(`${Constants.baseApi}/home`, { params: httpParams });
+  }
+  
+  getCtegories(): Observable<any> {
+    return this.http.get<any>(`${Constants.baseApi}/categories-listing`);
+  }
+  getSurveys(): Observable<any> {
+    return this.http.get<any>(`${Constants.baseApi}/survey-listing`);
   }
   userInfo(){
     return this.http.get<any>(`${Constants.baseApi}/profile`);

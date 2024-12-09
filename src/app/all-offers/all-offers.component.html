@@ -9,7 +9,7 @@
                 <span class="fas fa-info-circle"></span>
               </p>
               <p class="points" style="margin: 0;">
-                {{wallet.length>0?wallet:'0'}}
+                {{wallet?.length>0?wallet[0].points:'0'}}
                 <span style="font-size: 14px; font-weight: 400; line-height: 20px;">
                   Points
                 </span>
@@ -39,38 +39,20 @@
      <input class="form-control" placeholder="search for resturant" type="text"/>
     </div>
     <div class="category-icons">
-     <div>
-      <img alt="Beverages" height="60" src="https://storage.googleapis.com/a1aa/image/VbWoYKYlHSomLdFiK9yc4S42bzMiADhQGUaoLZYoZgz24U9E.jpg" width="60"/>
-      <div>
-       Beverages
+      <div *ngFor="let category of categories" (click)="onCategoryClick(category.id)">
+        <img [src]="category.logo" [alt]="category.name" height="60" width="60" />
+        <div>{{ category.name }}</div>
       </div>
-     </div>
-     <div>
-      <img alt="Snack" height="60" src="https://storage.googleapis.com/a1aa/image/fomdnFsdmT3JQifzOvkdQhDtVbOnpJLzoEjds3qtBZemGnqnA.jpg" width="60"/>
-      <div>
-       Snack
-      </div>
-     </div>
-     <div>
-      <img alt="Seafood" height="60" src="https://storage.googleapis.com/a1aa/image/f8z6C2xWqJRSPqUoKAsliuWgulLffSX2KrfwM9SFxCUdNOVPB.jpg" width="60"/>
-      <div>
-       Seafood
-      </div>
-     </div>
-     <div>
-      <img alt="Dessert" height="60" src="https://storage.googleapis.com/a1aa/image/76frTHjsHXyIOCMgI4UYGJV1YTCDg14htowy7Gwq7ovqxp6JA.jpg" width="60"/>
-      <div>
-       Dessert
-      </div>
-     </div>
     </div>
+    
+    
     <div *ngIf="!isLoading; else shimmerEffect">
     <div class="card" *ngFor="let offer of offers" [routerLink]="['/offer-detail']" [queryParams]="{ id: offer.id }"
     >
         <button class="share-button">
             <img src="/assets/share.png" alt="">
             <span style="margin-left: 5px;">Share</span>      </button>
-     <img alt="Triple Cheeseburger with price 19 ريال" class="offer-img" height="180" [src]="offer.images[0].url" width="600"/>
+     <img alt="Triple Cheeseburger with price 19 ريال" class="offer-img" height="180" [src]="offer?.images[0]?.url" width="600"/>
     </div>
     </div>
     <ng-template #shimmerEffect>

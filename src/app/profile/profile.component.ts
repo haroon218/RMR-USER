@@ -19,6 +19,7 @@ export class ProfileComponent {
   constructor(private location: Location,private service:AuthService) {
     this.userData = this.service.getData('user');
     this.profileInformation()
+    this.userinfo()
   }
   goBack() {
     this.location.back();

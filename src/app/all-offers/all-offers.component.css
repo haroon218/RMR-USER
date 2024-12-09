@@ -5,19 +5,31 @@
 }
 
 .category-icons {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 0;
+  display: flex;
+  justify-content: flex-start; /* Align items to the left */
+  gap: 20px; /* Add spacing between items */
+  margin: 20px 0;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent wrapping */
+  padding-bottom: 10px; /* Add space for scrollbar (optional) */
 }
+
 .category-icons img {
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  border: 1px solid #6f42c1;
+  cursor: pointer; /* Indicate clickable items */
 }
-.category-icons div {
-    text-align: center;
-    font-size: 0.9rem;
+
+.category-icons > div {
+  display: inline-block; /* Ensure each item stays inline */
+  text-align: center;
+  font-size: 0.9rem;
+  /* Center align text under icons */
 }
+
+
 .card {
     border: none;
     border-radius: 8px;

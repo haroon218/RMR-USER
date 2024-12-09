@@ -9,11 +9,11 @@
                         <span class="fas fa-info-circle"></span>
                     </p>
                     <p class="points" style="margin: 0;">
-                        {{wallet.length>0?wallet:'0'}}
+                        {{wallet?.length>0?wallet[0].points:'0'}}
                         <span style="font-size: 14px; font-weight: 400; line-height: 20px;">
-                            Points
+                          Points
                         </span>
-                    </p>
+                      </p>
                 </div>
                 <!-- Right side: Image -->
                 <div>
@@ -39,39 +39,12 @@
         <input class="form-control" placeholder="search for resturant" type="text" />
     </div>
     <div class="category-icons">
-        <div>
-            <img alt="Beverages" height="60"
-                src="https://storage.googleapis.com/a1aa/image/VbWoYKYlHSomLdFiK9yc4S42bzMiADhQGUaoLZYoZgz24U9E.jpg"
-                width="60" />
-            <div>
-                Beverages
-            </div>
+        <div *ngFor="let category of categories" (click)="onCategoryClick(category.id)">
+          <img [src]="category.logo" [alt]="category.name" height="60" width="60" />
+          <div>{{ category.name }}</div>
         </div>
-        <div>
-            <img alt="Snack" height="60"
-                src="https://storage.googleapis.com/a1aa/image/fomdnFsdmT3JQifzOvkdQhDtVbOnpJLzoEjds3qtBZemGnqnA.jpg"
-                width="60" />
-            <div>
-                Snack
-            </div>
-        </div>
-        <div>
-            <img alt="Seafood" height="60"
-                src="https://storage.googleapis.com/a1aa/image/f8z6C2xWqJRSPqUoKAsliuWgulLffSX2KrfwM9SFxCUdNOVPB.jpg"
-                width="60" />
-            <div>
-                Seafood
-            </div>
-        </div>
-        <div>
-            <img alt="Dessert" height="60"
-                src="https://storage.googleapis.com/a1aa/image/76frTHjsHXyIOCMgI4UYGJV1YTCDg14htowy7Gwq7ovqxp6JA.jpg"
-                width="60" />
-            <div>
-                Dessert
-            </div>
-        </div>
-    </div>
+      </div>
+      
     <div class="container mt-4" style="padding: 0;">
         <div class="reward-card" *ngFor="let offer of rewards" routerLink="/reward-detail">
             <img alt="Image of a Wagyu Burger" height="60"

@@ -12,15 +12,32 @@ export class AllOffersComponent {
   offers:any=[]
   isLoading = true;
   wallet:any=[]
-  constructor(private location: Location,private authService:AuthService) {
-    this.homeScreen()
+  categories:any = [
+   
+  ];  constructor(private location: Location,private authService:AuthService) {
+    this.userinfo()
+    this.loadHomeScreen()
+    this.getCategories()
   }
   goBack() {
     this.location.back();
   }
-  homeScreen(){
+  getCategories() {
+    this.authService.getCtegories().subscribe({
+      next: (res) => {
+        debugger;
+        // Replace category images with a dummy URL
+        this.categories = res.data.data
+      },
+      error: (err) => {
+        console.error('Error fetching categories', err);
+      },
+    });
+  }
+  loadHomeScreen(categoryId?: string){
     debugger
-    this.authService.homeScreen().subscribe({
+    this.isLoading=true
+    this.authService.homeScreen(categoryId).subscribe({
       next: (res) => {
         this.offers=res.data.offers;
         this.isLoading=false
@@ -28,6 +45,9 @@ export class AllOffersComponent {
 
       }
     })
+      }
+      onCategoryClick(categoryId: string): void {
+        this.loadHomeScreen(categoryId);
       }
       userinfo(){
         this.authService.userInfo().subscribe({
