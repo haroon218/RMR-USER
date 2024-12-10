@@ -88,13 +88,32 @@ export class SurveyComponent {
     // Append the questions
     this.questions.forEach((question, index) => {
       formData.append(`question[${index}][survey_question_id]`, question.id.toString());
-      formData.append(`question[${index}][survey_question_option_id]`, question.selectedOption ? question.selectedOption.toString() : '');
+  
+      // Handle multiple selected options
+      if (Array.isArray(question.selectedOptions)) {
+        question.selectedOptions.forEach((option:any, optionIndex:any) => {
+          formData.append(
+            `question[${index}][survey_question_option_id][${optionIndex}]`,
+            option.toString()
+          );
+        });
+      } else if (question.selectedOption) {
+        // For single selection fallback (if needed)
+        formData.append(
+          `question[${index}][survey_question_option_id][0]`,
+          question.selectedOption.toString()
+        );
+      }
+  
       // Uncomment below if you want to include custom answers
       // formData.append(`question[${index}][custom_answer]`, question.customAnswer || '');
     });
   
     // Log the FormData for debugging
-    
+    console.log('FormData entries:');
+    for (const pair of formData.entries()) {
+      console.log(pair[0], pair[1]);
+    }
   
     this.surveyService.submitSurvey(formData).subscribe({
       next: (response) => {
@@ -114,6 +133,7 @@ export class SurveyComponent {
       },
     });
   }
+  
   goBack() {
     this.location.back();
   }

@@ -79,7 +79,7 @@
     </div>
     <div class="card">
         <img alt="A plate of assorted sushi with various types of rolls and garnishes" class="card-img-top" height="160"
-            src="https://storage.googleapis.com/a1aa/image/PuMJdz62kkYiJdmS6Zt0FvbZl471CsaRb1yZXm7tqDQRUV9E.jpg"
+        [src]="surveys[0].images[0].url"
             width="286" />
         <div class="card-body position-relative">
             <h5 class="card-title" style="color: #5e2b8a;">
@@ -88,7 +88,7 @@
                 30% da...
             </h5>
             <p class="card-text" style="color: #007bff;">
-                get 1.000 Points
+                {{surveys[0].points}}
             </p>
             <div class="progress-circle">
                 <svg height="50" width="50">

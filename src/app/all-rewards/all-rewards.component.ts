@@ -12,6 +12,7 @@ import { AuthService } from '../services/auth.service';
 export class AllRewardsComponent {
   rewards:any
   wallet:any
+  surveys:any
   isLoading=true
   categories :any= [
   
@@ -42,8 +43,9 @@ export class AllRewardsComponent {
 
     this.authService.homeScreen(categoryId).subscribe({
       next: (res) => {
+        debugger
         this.rewards=res.data.rewards;
-        this.isLoading=false
+       this.surveys=res.data.surveys
         // this.userinfo()
 
       }
