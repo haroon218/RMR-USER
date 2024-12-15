@@ -4,4 +4,27 @@
 }
 .navbar-brand img {
     height: 30px;
-}
+}/* Sidebar styling */
+.sidebar {
+    position: fixed;
+    top: 70px;
+    left: -250px;
+    width: 150px;
+    height: 100%;
+    background-color: #f8f9fa;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease;
+    padding: 1rem;
+  }
+  
+  .sidebar.open {
+    left: 0;
+    top: 70px;
+  }
+  
+  /* Styling for the logout button */
+  #logoutButton {
+    padding: 10px;
+    font-size: 16px;
+  }
+  

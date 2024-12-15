@@ -10,7 +10,7 @@ import * as CryptoJS from 'crypto-js';
 })
 export class AuthService {
 
-  private isLoggedInSubject = new BehaviorSubject<boolean>(this.hasToken());
+  public isLoggedInSubject = new BehaviorSubject<boolean>(this.hasToken());
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
 
 
@@ -38,12 +38,7 @@ export class AuthService {
     return this.encryptId(id);
   }
 
-  logout(): void {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    this.isLoggedInSubject.next(false);
-    this.router.navigate(['/login']);
-  }
+ 
 
   hasToken(): boolean {
     return !!localStorage.getItem('token');
@@ -60,12 +55,17 @@ export class AuthService {
   addreview(credentials:any){
     return this.http.post<any>(`${Constants.baseApi}/review-store`,credentials)
   }
-  homeScreen(categoryId?: string): Observable<any> {
+  Logout(){
+    return this.http.post<any>(`${Constants.baseApi}/user/logout`,{})
+  }
+  homeScreen(categoryId?: string,company_id?:any): Observable<any> {
     let httpParams = new HttpParams();
     if (categoryId) {
       httpParams = httpParams.set('category_id', categoryId);
     }
-
+    if (company_id) {
+      httpParams = httpParams.set('company_id', company_id);
+    }
     return this.http.get<any>(`${Constants.baseApi}/home`, { params: httpParams });
   }
   

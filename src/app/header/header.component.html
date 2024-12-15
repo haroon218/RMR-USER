@@ -1,14 +1,17 @@
 <nav class="navbar navbar-light bg-white">
     <div class="container-fluid">
-     <button class="navbar-toggler" type="button">
-      <span class="navbar-toggler-icon">
-      </span>
-     </button>
-     <a class="navbar-brand ms-auto" href="#">
+      <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand ms-auto" href="#">
         <img alt="Company logo with a purple and blue shield-like design" height="50" src="/assets/Logo.svg" />
-        <span class="ms-2 fw-bold">
-       RMR
-      </span>
-     </a>
+        <span class="ms-2 fw-bold">RMR</span>
+      </a>
     </div>
-   </nav>
+  </nav>
+  
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar" [ngClass]="{'open': isSidebarOpen}">
+    <button class="btn btn-danger w-100 mt-3" (click)="logout()">Logout</button>
+  </div>
+  

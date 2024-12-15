@@ -10,11 +10,12 @@ import { RegisterComponent } from './register/register.component';
 import { ReviewComponent } from './review/review.component';
 import { SurveyComponent } from './survey/survey.component';
 import { AllSurveysComponent } from './all-surveys/all-surveys.component';
+import { AuthGuard } from './auth.guard';
 
 export const routes: Routes = [
-    { path: '', redirectTo: "register", pathMatch: 'full' },
-    { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent },
+    { path: '', redirectTo: 'register', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
+  { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
     { path: 'home', component: HomeComponent },
     { path: 'offers', component: AllOffersComponent },
     { path: 'offer-detail', component: OfferDetailComponent },
