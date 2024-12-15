@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Html5QrcodeScanner } from 'html5-qrcode';
 import { AuthService } from '../services/auth.service';
@@ -15,8 +15,6 @@ export class FooterComponent {
   showScanner = false;
   qrScanner!: Html5QrcodeScanner;
   loginUser:any=false
-  showNavbar: boolean = true; // Controls the visibility of the navbar
-  activityTimeout: any;
   constructor(private authservice:AuthService,){
     
   }
@@ -24,33 +22,8 @@ export class FooterComponent {
     this.authservice.isLoggedIn$.subscribe((status) => {
       this.loginUser = status;
     });
-    this.resetActivityTimer();
-  }
-  @HostListener('window:scroll', ['$event'])
-  onScroll(event: Event): void {
-    this.resetActivityTimer(); // Reset the activity timer on scroll
-    this.showNavbar = true; // Show navbar on activity
   }
 
-  @HostListener('window:mousemove', ['$event'])
-  onMouseMove(event: Event): void {
-    this.resetActivityTimer(); // Reset the activity timer on mouse move
-    this.showNavbar = true; // Show navbar on activity
-  }
-
-  @HostListener('window:click', ['$event'])
-  onClick(event: Event): void {
-    this.resetActivityTimer(); // Reset the activity timer on click
-    this.showNavbar = true; // Show navbar on activity
-  }
-
-  // Reset the inactivity timer and hide navbar after a set period
-  resetActivityTimer(): void {
-    clearTimeout(this.activityTimeout);
-    this.activityTimeout = setTimeout(() => {
-      this.showNavbar = false; // Hide the navbar after inactivity
-    }, 2000); // 5 seconds of inactivity
-  }
   openScanner() {
     this.showScanner = true;
 

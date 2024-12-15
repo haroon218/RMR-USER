@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { ToastrService } from 'ngx-toastr'; // Import ToastrService
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private toastr: ToastrService) {}
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const token = localStorage.getItem('token');
@@ -25,7 +26,9 @@ export class AuthGuard implements CanActivate {
     if (allowedRoutes.includes(state.url)) {
       return true; // Allow access to login/signup
     } else {
-      this.router.navigate(['/signup']); // Redirect to signup if no token
+      // Redirect to login and show a toastr notification
+      this.toastr.warning('Please log in first!', 'Authentication Required');
+      this.router.navigate(['/login']); // Redirect to login page
       return false; // Block access to other routes
     }
   }

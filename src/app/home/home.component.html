@@ -141,7 +141,7 @@
       <p>
         Get More Points
       </p>
-      <a routerLink="/all-surveys">
+      <a *ngIf="homeView?.surveys?.length > 0" routerLink="/all-surveys">
         See All
       </a>
     </div>
