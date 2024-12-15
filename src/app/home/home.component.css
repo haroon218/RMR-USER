@@ -137,4 +137,11 @@
   .share .fas {
     margin-right: 5px; /* Space between the icon and the text */
   }
+  .no-surveys {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+    font-size: 18px;
+    font-weight: bold;
+  }
   

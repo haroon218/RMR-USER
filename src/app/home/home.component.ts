@@ -14,6 +14,7 @@ export class HomeComponent {
   homeView:any
   wallet:any
   categories:any
+  surveys:any
 constructor(private authService:AuthService){
 
 }
@@ -42,15 +43,29 @@ constructor(private authService:AuthService){
       },
     });
   }
-  homeScreen(){
-this.authService.homeScreen().subscribe({
-  next: (res) => {
-    debugger
-    this.homeView=res.data;
-    console.log(this.homeView)
+  homeScreen() {
+    this.authService.homeScreen().subscribe({
+      next: (res) => {
+        debugger;
+        this.homeView = res.data;
+  
+        // Filter surveys to exclude those with "servey_submitted" === "yes"
+        this.surveys = res.data.surveys.filter(
+          (survey: any) => survey.servey_submitted?.toLowerCase() !== "yes"
+        );
+  
+        // Replace homeView's survey data with filtered surveys
+        this.homeView.surveys = this.surveys;
+  
+        console.log(this.homeView);
+      },
+      error: (err) => {
+        console.error("Error fetching home screen data:", err);
+      },
+    });
   }
-})
-  }
+  
+  
   userinfo(){
     this.authService.userInfo().subscribe({
       next: (res) => {
