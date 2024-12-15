@@ -56,7 +56,7 @@ export class AuthService {
     return this.http.post<any>(`${Constants.baseApi}/review-store`,credentials)
   }
   Logout(){
-    return this.http.post<any>(`${Constants.baseApi}/user/logout`,{})
+    return this.http.post<any>(`${Constants.baseApi}/logout`,{})
   }
   homeScreen(categoryId?: string,company_id?:any): Observable<any> {
     let httpParams = new HttpParams();
