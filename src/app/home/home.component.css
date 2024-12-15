@@ -148,7 +148,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh; /* Center vertically */
     background-color: #f9f9f9;
   }
   
