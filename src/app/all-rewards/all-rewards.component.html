@@ -46,7 +46,7 @@
       </div>
       
     <div class="container mt-4" style="padding: 0;">
-        <div class="reward-card" *ngFor="let offer of rewards" routerLink="/reward-detail">
+        <div class="reward-card" *ngFor="let offer of rewards"  [routerLink]="['/reward-detail']" [queryParams]="{ id:offer.id }">
             <img alt="Image of a Wagyu Burger" height="60"
                [src]="offer.images[0].url"
                 width="60" />
@@ -73,11 +73,11 @@
         <p style="color: #3D1D5E;margin: 0;">
             Get more points
         </p>
-        <a routerLink="/rewards">
+        <a routerLink="/all-surveys">
             See All
         </a>
     </div>
-    <div class="card">
+    <div class="card" [routerLink]="['/survey-detail']" [queryParams]="{ id: surveys[0].id }">
         <img alt="A plate of assorted sushi with various types of rolls and garnishes" class="card-img-top" height="160"
         [src]="surveys[0].images[0].url"
             width="286" />

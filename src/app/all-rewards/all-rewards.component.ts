@@ -45,7 +45,7 @@ export class AllRewardsComponent {
       next: (res) => {
         debugger
         this.rewards=res.data.rewards;
-       this.surveys=res.data.surveys
+        this.surveys=res.data.surveys;
         // this.userinfo()
 
       }

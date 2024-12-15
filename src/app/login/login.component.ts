@@ -77,7 +77,6 @@ export class LoginComponent {
   // Handle login
   onLoginSubmit() {
     if (this.loginForm.valid) {
-      // Make API call to log in the user
        this.authservice.login(this.loginForm.value)
         .subscribe({
           next: (response: any) => {
@@ -94,7 +93,6 @@ export class LoginComponent {
            
           },
           error: (err: any) => {
-            debugger
             this.toastr.error(err.error.message,'Error')
           },
         });

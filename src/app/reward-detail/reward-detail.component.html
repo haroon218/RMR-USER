@@ -1,29 +1,39 @@
-<div class="container">
-    <div class="balance-card">
+
+ 
+        
+  <div class="container" style="margin-top: 16px;">
+    <ng-container *ngIf="isLoading; else content">
+      <div class="shimmer-container">
+        <div class="shimmer-item balance-card"></div>
+        <div class="shimmer-item card"></div>
+      </div>
+    </ng-container>
+    <ng-template #content>
+     <div class="balance-card">
         <div>
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <!-- Left side: Balance and Points -->
-                <div style="display: flex; flex-direction: column;">
-                    <p class="balance-info" style="margin: 0;">
-                        Balance
-                        <span class="fas fa-info-circle"></span>
-                    </p>
-                    <p class="points" style="margin: 0;">
-                        {{wallet?.length>0?wallet[0].points:'0'}}
-                        <span style="font-size: 14px; font-weight: 400; line-height: 20px;">
-                          Points
-                        </span>
-                      </p>
-                </div>
-                <!-- Right side: Image -->
-                <div>
-                    <img src="/assets/Badge_03.png" alt="" style="height: 60px; width: 60px; object-fit: contain;">
-                </div>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <!-- Left side: Balance and Points -->
+            <div style="display: flex; flex-direction: column;">
+              <p class="balance-info" style="margin: 0;">
+                Balance
+                <span class="fas fa-info-circle"></span>
+              </p>
+              <p class="points" style="margin: 0;">
+                {{wallet?.length>0?wallet[0].points:'0'}}
+                <span style="font-size: 14px; font-weight: 400; line-height: 20px;">
+                  Points
+                </span>
+              </p>
             </div>
+            <!-- Right side: Image -->
+            <div>
+              <img src="/assets/Badge_03.png" alt="" style="height: 60px; width: 60px; object-fit: contain;">
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
     <div class="back-button" (click)="goBack()">
-        <i class="fas fa-arrow-left" style="border-radius: 50%;
+     <i class="fas fa-arrow-left" style="border-radius: 50%;
      background-color: #6D428F;
      color: white;
      padding: 4px;
@@ -32,8 +42,66 @@
      align-items: end;
      width: 20px;
      height: 20px;">
-        </i>
-        Back
+     </i>
+     Back
     </div>
-   
-</div>  
+
+   <div class="card">
+    <img alt="McDonald's burger with a drink and fries, 19 SAR offer in Arabic" class="card-img-top" height="180" [src]="offer.images[0].url" />
+    <div class="card-body" style="padding: 16px 0px;">
+     <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+       <img alt="McDonald's logo" class="brand-logo" height="30" [src]="offer.company_image" width="30"/>
+       <span class="brand-name">
+        {{offer.company_name}}
+       </span>
+       <i class="fas fa-check-circle verified-icon">
+       </i>
+      </div>
+      <button class="share-button">
+        <img src="/assets/share.png" alt="">
+      <span style="margin-left: 5px;">Share</span> 
+      </button>
+     </div>
+     <div class="price">
+      {{offer.points}} points
+     </div>
+     <div class="discount">
+      {{offer.name}}
+     </div>
+     <div class="description">
+     " {{offer.description}} "
+     </div>
+     <div class="branch-card">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="branch-title">King Faisal Branch</div>
+            <div class="branch-distance">1.2 km</div>
+        </div>
+        <div class="mt-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="branch-info">
+                    <div>Phone Number</div>
+                    <div><strong>9200 66111</strong></div>
+                </div>
+                <button class="btn btn-call"><i class="fas fa-phone-alt"></i> Call</button>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+                <div class="branch-info">
+                    <div>Location</div>
+                    <div><strong>King Fahad Bran</strong></div>
+                </div>
+                <button class="btn btn-location"><i class="fas fa-map-marker-alt"></i> Open</button>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+                <div class="branch-info">
+                    <div>Hours</div>
+                    <div><strong>24 hours</strong></div>
+                </div>
+                <button class="btn btn-hours"><i class="fas fa-circle"></i> Open</button>
+            </div>
+        </div>
+    </div>
+    </div>
+   </div>
+  </ng-template>
+  </div>

@@ -72,59 +72,45 @@
         {{ category.name }}
       </span>
     </div>
-    
+
     <div class="offer-card mt-3" [routerLink]="['/offer-detail']" [queryParams]="{ id: homeView.offers[0].id }">
-      <img
-        alt="McDonald's offer image"
-        style="width: 100%; border-radius: 10px;"
-        height="200"
-        [src]="homeView.offers[0].images[0].url"
-      />
+      <img alt="McDonald's offer image" style="width: 100%; border-radius: 10px;" height="200"
+        [src]="homeView.offers[0].images[0].url" />
       <div class="offer-info" style="padding: 10px; display: flow-root;">
         <div style="display: flex; justify-content: space-between; align-items: center;">
           <!-- Company Info -->
           <div class="brand-info" style="display: flex; align-items: center;">
-            <img
-              class="brand-image"
-              style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;"
-              [src]="homeView.offers[0].images[0].url"
-              alt="McDonald's logo"
-            />
+            <img class="brand-image" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;"
+             [src]=" homeView.offers[0].company_image" alt="McDonald's logo" />
             <p class="brand" style="margin: 0; font-size: 14px; font-weight: bold;">
               {{ homeView.offers[0].company_name }}
               <span class="fas fa-check-circle" style="color: #6D428F; margin-left: 5px;"></span>
             </p>
           </div>
-    
+
           <!-- Price Info -->
           <div class="price-info" style="display: flex; align-items: baseline;">
             <p class="price" style="margin: 0; font-size: 16px; font-weight: bold; color: #333;">
               {{ homeView.offers[0].price }}
             </p>
-            <span
-              style="font-size: 12px; font-weight: 400; margin-left: 5px; line-height: 1; color: #666;"
-            >
+            <span style="font-size: 12px; font-weight: 400; margin-left: 5px; line-height: 1; color: #666;">
               SAR
             </span>
           </div>
         </div>
-    
+
         <!-- Offer Name and Share -->
         <div style="margin-top:5px;">
           <p style="color: #6D428F; margin: 0; font-weight: 500;">{{ homeView.offers[0].name }}</p>
           <p class="share" style="display: flex; align-items: center; margin: 10px 0 0;">
-            <img
-              src="/assets/share.png"
-              class="share-img"
-              style="width: 16px; height: 16px; margin-right: 5px;"
-              alt="Share"
-            />
+            <img src="/assets/share.png" class="share-img" style="width: 16px; height: 16px; margin-right: 5px;"
+              alt="Share" />
             <span style="font-size: 14px; color: #333;">Share</span>
           </p>
         </div>
       </div>
     </div>
-    
+
 
   </div>
   <div class="rewards">
@@ -136,7 +122,7 @@
         See All
       </a>
     </div>
-    <div class="reward-card" routerLink="/reward-detail">
+    <div class="reward-card" [routerLink]="['/reward-detail']" [queryParams]="{ id: homeView.rewards[0].id }">
       <img alt="Reward image" height="200" [src]="homeView.rewards[0].images[0].url" width="300" />
       <div class="reward-info">
         <p style="margin-bottom: 6px;">
@@ -155,14 +141,12 @@
       <p>
         Get More Points
       </p>
-      <a href="#">
+      <a routerLink="/all-surveys">
         See All
       </a>
     </div>
     <div class="points-card" [routerLink]="['/survey-detail']" [queryParams]="{ id: homeView.surveys[0].id }">
-      <img alt="Get more points image" height="200"
-        [src]="homeView.surveys[0].images[0].url"
-        width="300" />
+      <img alt="Get more points image" height="200" [src]="homeView.surveys[0].images[0].url" width="300" />
       <div class="points-info">
         <p>
           {{homeView.surveys[0].name}}

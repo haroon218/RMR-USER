@@ -130,3 +130,146 @@
     font-size: 0.9rem;
     color: #6c757d;
   }
+  .back-button {
+    color: #6c757d;
+    font-size: 1.2rem;
+}
+.card {
+    border: none;
+    border-radius: 10px;
+    margin: 20px 0px;
+}
+.card img {
+   border-radius: 8px;
+}
+.card-body {
+    text-align: center;
+}
+.brand-logo {
+    width: 30px;
+    height: 30px;
+}
+.brand-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #6D428F;
+    margin-left: 10px;
+}
+.verified-icon {
+    color: #1da1f2;
+    margin-left: 5px;
+}
+.share-button {
+    display: flex;
+    align-items: center;
+    background-color: #6f42c1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+}
+.price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+.discount {
+    color: #6f42c1;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.description {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+
+.balance-card {
+    background: linear-gradient(135deg, #B4BBFC 0%, #E7D0F2 100%);
+    border-radius: 15px;
+    padding: 7px 16px;
+    color: #6D428F;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  .balance-card .balance-info {
+    font-size: 1rem;
+  }
+  .balance-card .points {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  .branch-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px;
+    max-width: 400px;
+    margin: 20px auto;
+    background-color: #fff;
+}
+.branch-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #6f42c1;
+}
+.branch-distance {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+.branch-info {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+.branch-info strong {
+    color: #343a40;
+}
+.btn-call, .btn-location, .btn-hours {
+    font-size: 0.875rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+.btn-call {
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+.btn-location {
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+.btn-hours {
+    background-color: #d4edda;
+    color: #155724;
+}
+.btn-hours .fa-circle {
+    color: #28a745;
+}
+.shimmer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .shimmer-item {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: 4px;
+    height: 60px;
+    width: 100%;
+  }
+  
+  .shimmer-item.card {
+    height: 300px; /* Adjust as necessary */
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+  
