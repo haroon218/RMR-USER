@@ -56,6 +56,15 @@
     background-color: #FFFFFF;
     padding: 10px 0;
 }
+.navbar-transition.ng-leave {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  
+  .navbar-transition.ng-enter {
+    transform: translateY(0);
+    opacity: 1;
+  }
 .navbar-nav {
     width: 100%;
     display: flex;

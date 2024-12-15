@@ -11,10 +11,16 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
   isSidebarOpen: boolean = false;
-constructor(private authService:AuthService,private router:Router){}
+  isLoggedIn: boolean = false; 
+constructor(private authService:AuthService,private router:Router){
+  this.authService.isLoggedIn$.subscribe((status) => {
+    this.isLoggedIn = status;
+  });
+}
   toggleSidebar() {
-    this.isSidebarOpen = !this.isSidebarOpen;
-  }
+ if (this.isLoggedIn) {
+      this.isSidebarOpen = !this.isSidebarOpen;
+    }   }
 
   logout() {
     this.authService.Logout().subscribe(
