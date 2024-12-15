@@ -173,10 +173,15 @@
   </div>
   
   <ng-template #noSurveysTemplate>
-    <div class="no-surveys">
-      <p>No surveys are available at the moment. Please check back later.</p>
+    <div class="no-surveys-container">
+      <div class="no-surveys-card">
+        <i class="bi bi-clipboard-x" style="font-size: 48px; color: #6c757d;"></i>
+        <h2>No Surveys Available</h2>
+        <p>There are currently no surveys available for you. Please check back later for updates.</p>
+      </div>
     </div>
   </ng-template>
+  
   
 
 <!-- Fallback template for no surveys -->
