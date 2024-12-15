@@ -51,23 +51,11 @@
     margin-left: 10px;
 }
 .navbar {
-    position:fixed;
+    position:sticky;
     bottom: 0;
     background-color: #FFFFFF;
     padding: 10px 0;
-    transition: transform 0.5s ease, opacity 0.5s ease;
-  transform: translateY(0);  /* Start position */
-  opacity: 1;
 }
-.navbar-transition.ng-leave {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  
-  .navbar-transition.ng-enter {
-    transform: translateY(0);
-    opacity: 1;
-  }
 .navbar-nav {
     width: 100%;
     display: flex;
