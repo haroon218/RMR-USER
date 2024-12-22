@@ -59,6 +59,7 @@ export class AuthService {
     return this.http.post<any>(`${Constants.baseApi}/logout`,{})
   }
   homeScreen(categoryId?: string,company_id?:any): Observable<any> {
+    debugger
     let httpParams = new HttpParams();
     if (categoryId) {
       httpParams = httpParams.set('category_id', categoryId);

@@ -28,6 +28,9 @@ constructor(private authService:AuthService){
     this.getCategories()
     this.userinfo()
   }
+  onCategoryClick(categoryId: string): void {
+    this.homeScreen(categoryId);
+  }
   getCategories() {
     this.authService.getCtegories().subscribe({
       next: (res) => {
@@ -43,8 +46,11 @@ constructor(private authService:AuthService){
       },
     });
   }
-  homeScreen() {
-    this.authService.homeScreen().subscribe({
+  homeScreen(category_id?:any) {
+    const company:any=localStorage.getItem('user');
+    const user = JSON.parse(company);
+   const company_id=user.companies[0].company_id;
+    this.authService.homeScreen(category_id,company_id).subscribe({
       next: (res) => {
         debugger;
         this.homeView = res.data;

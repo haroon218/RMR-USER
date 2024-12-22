@@ -72,22 +72,22 @@
       
               <div *ngIf="questions[currentQuestionIndex].type === 'true_false'">
                 <label>
-                  <input type="radio" name="true_false" value="true" [(ngModel)]="questions[currentQuestionIndex].selectedOption" /> True
+                  <input type="radio" name="true_false" value="true" [(ngModel)]="questions[currentQuestionIndex].customAnswer" /> True
                 </label>
                 <label>
-                  <input type="radio" name="true_false" value="false" [(ngModel)]="questions[currentQuestionIndex].selectedOption" /> False
+                  <input type="radio" name="true_false" value="false" [(ngModel)]="questions[currentQuestionIndex].customAnswer" /> False
                 </label>
               </div>
       
               <div *ngIf="questions[currentQuestionIndex].type === 'paragraph'">
-                <textarea class="form-control" [(ngModel)]="questions[currentQuestionIndex].response" placeholder="Your response..."></textarea>
+                <textarea class="form-control" [(ngModel)]="questions[currentQuestionIndex].customAnswer" placeholder="Your response..."></textarea>
               </div>
       
               <div *ngIf="questions[currentQuestionIndex].type === 'rating'">
                 <label>Rating (1 to 5):</label>
                 <input 
   type="range" 
-  [(ngModel)]="questions[currentQuestionIndex].rating" 
+  [(ngModel)]="questions[currentQuestionIndex].customAnswer" 
   min="1" 
   max="5" 
   step="1" 
@@ -100,7 +100,7 @@
                 <label>Opinion Scale (1 to 10):</label>
                 <input 
                 type="range" 
-                [(ngModel)]="questions[currentQuestionIndex].opinion_scale" 
+                [(ngModel)]="questions[currentQuestionIndex].customAnswer" 
                 min="1" 
                 max="10" 
                 step="1" 

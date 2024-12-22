@@ -36,8 +36,11 @@ export class AllOffersComponent {
   }
   loadHomeScreen(categoryId?: string){
     debugger
+    const company:any=localStorage.getItem('user');
+    const user = JSON.parse(company);
+   const company_id=user.companies[0].company_id;
     this.isLoading=true
-    this.authService.homeScreen(categoryId).subscribe({
+    this.authService.homeScreen(categoryId,company_id).subscribe({
       next: (res) => {
         this.offers=res.data.offers;
         this.isLoading=false

@@ -106,7 +106,7 @@ export class SurveyComponent {
       }
   
       // Uncomment below if you want to include custom answers
-      // formData.append(`question[${index}][custom_answer]`, question.customAnswer || '');
+      formData.append(`question[${index}][custom_answer]`, question.customAnswer || '');
     });
   
     // Log the FormData for debugging
