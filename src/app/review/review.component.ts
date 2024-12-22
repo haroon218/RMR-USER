@@ -25,11 +25,23 @@ export class ReviewComponent {
       title:[''] // Ensure minimum text length
     });
   }
+  profileData:any
   ngOnInit() {
     // Extract ID from the query parameters
     const userData:any= this.service.getData('user');
     this.id=userData.companies[0].company_id;
     this.companyName=userData.companies[0].company_name
+    this.profileInformation(userData)
+  }
+  profileInformation(userData:any){
+    debugger
+this.service.profileInformation(userData.companies[0].company_id).subscribe({
+  next: (res) => {
+    this.profileData=res.data
+  
+
+  }
+})
   }
   setRating(rating: number): void { 
     this.ratingForm.patchValue({ rating });

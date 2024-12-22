@@ -49,6 +49,9 @@ export class AllRewardsComponent {
         debugger
         this.rewards=res.data.rewards;
         this.surveys=res.data.surveys;
+        this.surveys = res.data.surveys.filter(
+          (survey: any) => survey.servey_submitted?.toLowerCase() !== "yes"
+        );
         // this.userinfo()
 
       }

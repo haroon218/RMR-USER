@@ -77,7 +77,6 @@ export class SurveyComponent {
       this.currentQuestionIndex--;
     }
   }
-
   submitUserSurvey(): void {
     const formData = new FormData();
   
@@ -91,22 +90,25 @@ export class SurveyComponent {
   
       // Handle multiple selected options
       if (Array.isArray(question.selectedOptions)) {
-        question.selectedOptions.forEach((option:any, optionIndex:any) => {
+        question.selectedOptions.forEach((option: any, optionIndex: any) => {
           formData.append(
             `question[${index}][survey_question_option_id][${optionIndex}]`,
             option.toString()
           );
         });
       } else if (question.selectedOption) {
-        // For single selection fallback (if needed)
+        // For single selection fallback
         formData.append(
           `question[${index}][survey_question_option_id][0]`,
           question.selectedOption.toString()
         );
       }
   
-      // Uncomment below if you want to include custom answers
-      formData.append(`question[${index}][custom_answer]`, question.customAnswer || '');
+      // Append custom answer only for specific types
+      const customAnswerTypes = ['true_false', 'paragraph', 'rating', 'opinion_scale'];
+      if (customAnswerTypes.includes(question.type)) {
+        formData.append(`question[${index}][custom_answer]`, question.customAnswer || '');
+      }
     });
   
     // Log the FormData for debugging
@@ -115,6 +117,7 @@ export class SurveyComponent {
       console.log(pair[0], pair[1]);
     }
   
+    // Submit the survey
     this.surveyService.submitSurvey(formData).subscribe({
       next: (response) => {
         if (response.success) {
@@ -133,6 +136,7 @@ export class SurveyComponent {
       },
     });
   }
+  
   
   goBack() {
     this.location.back();
