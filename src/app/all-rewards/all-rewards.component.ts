@@ -16,7 +16,8 @@ export class AllRewardsComponent {
   isLoading=true
   categories :any= [
   
-  ];   constructor(private location: Location,private authService:AuthService) {
+  ];  
+   constructor(private location: Location,private authService:AuthService) {
     this.loadHomeScreen();
     this.userinfo()
     this.getCategories()
@@ -40,8 +41,10 @@ export class AllRewardsComponent {
   loadHomeScreen(categoryId?: string){
     debugger
     this.isLoading=true
-
-    this.authService.homeScreen(categoryId).subscribe({
+    const company:any=localStorage.getItem('user');
+    const user = JSON.parse(company);
+   const company_id=user.companies[0].company_id;
+    this.authService.homeScreen(categoryId,company_id).subscribe({
       next: (res) => {
         debugger
         this.rewards=res.data.rewards;
