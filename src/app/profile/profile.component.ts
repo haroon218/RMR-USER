@@ -44,7 +44,7 @@ this.service.profileInformation(this.userData.companies[0].company_id).subscribe
 })
   }
   fetchGoogleReviews() {
-    const placeId = 'ChIJO-IXHV4BGTkRAVAYYEc-MCc'; // Replace with your Place ID
+    const placeId = 'ChIJC02hBabQwxUR0ZYW3K24iBM'; // Replace with your Place ID
     const map = new google.maps.Map(document.createElement('div'), {
       center: { lat: 24.7136, lng: 46.6753 }, // Use a location near the place
       zoom: 15,
@@ -69,7 +69,7 @@ this.service.profileInformation(this.userData.companies[0].company_id).subscribe
   }
   
   giveReview() {
-    const placeId = 'ChIJO-IXHV4BGTkRAVAYYEc-MCc'; // Replace with the actual Place ID
+    const placeId = 'ChIJC02hBabQwxUR0ZYW3K24iBM'; // Replace with the actual Place ID
     const reviewUrl = `https://search.google.com/local/writereview?placeid=${placeId}`;
     window.open(reviewUrl, '_blank'); // Opens the review screen in a new tab or app
   }
