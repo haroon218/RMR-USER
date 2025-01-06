@@ -22,6 +22,19 @@ export class AllOffersComponent {
   goBack() {
     this.location.back();
   }
+  shareContent() {
+    if (navigator.share) {
+      navigator.share({
+        title: 'Check this out!',
+        text: 'Here is something interesting for you to explore.',
+        url: window.location.href,
+      })
+      .then(() => console.log('Successfully shared'))
+      .catch((error) => console.error('Error sharing:', error));
+    } else {
+      alert('Web Share API is not supported in your browser.');
+    }
+  }
   getCategories() {
     this.authService.getCtegories().subscribe({
       next: (res) => {

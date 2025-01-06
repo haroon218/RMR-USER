@@ -20,6 +20,7 @@ export class ProfileComponent {
     this.userData = this.service.getData('user');
     this.profileInformation()
     this.userinfo()
+    // this.fetchGoogleReviews()
   }
   goBack() {
     this.location.back();
@@ -41,6 +42,31 @@ this.service.profileInformation(this.userData.companies[0].company_id).subscribe
 
   }
 })
+  }
+  fetchGoogleReviews() {
+    const placeId = 'ChIJN1t_tDeuEmsRUsoyG83frY4'; // Replace with your Place ID
+    const map = new google.maps.Map(document.createElement('div'), {
+      center: { lat: -33.867, lng: 151.195 },
+      zoom: 15
+    });
+
+    const service = new google.maps.places.PlacesService(map);
+    service.getDetails(
+      { placeId, fields: ['reviews'] },
+      (place, status) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          debugger
+          this.reviews = place?.reviews || [];
+        } else {
+          console.error('Failed to fetch reviews:', status);
+        }
+      }
+    );
+  }
+
+  formatDate(timestamp: number): string {
+    const date = new Date(timestamp * 1000);
+    return date.toDateString();
   }
   userinfo(){
     this.service.userInfo().subscribe({

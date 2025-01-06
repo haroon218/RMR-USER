@@ -1,29 +1,29 @@
 <div class="container" style="margin-top: 16px;">
-    <div class="balance-card">
+  <div class="balance-card">
+    <div>
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <!-- Left side: Balance and Points -->
+        <div style="display: flex; flex-direction: column;">
+          <p class="balance-info" style="margin: 0;">
+            Balance
+            <span class="fas fa-info-circle"></span>
+          </p>
+          <p class="points" style="margin: 0;">
+            {{wallet?.length>0?wallet[0].points:'0'}}
+            <span style="font-size: 14px; font-weight: 400; line-height: 20px;">
+              Points
+            </span>
+          </p>
+        </div>
+        <!-- Right side: Image -->
         <div>
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <!-- Left side: Balance and Points -->
-            <div style="display: flex; flex-direction: column;">
-              <p class="balance-info" style="margin: 0;">
-                Balance
-                <span class="fas fa-info-circle"></span>
-              </p>
-              <p class="points" style="margin: 0;">
-                {{wallet?.length>0?wallet[0].points:'0'}}
-                <span style="font-size: 14px; font-weight: 400; line-height: 20px;">
-                  Points
-                </span>
-              </p>
-            </div>
-            <!-- Right side: Image -->
-            <div>
-              <img src="/assets/Badge_03.png" alt="" style="height: 60px; width: 60px; object-fit: contain;">
-            </div>
-          </div>
+          <img src="/assets/Badge_03.png" alt="" style="height: 60px; width: 60px; object-fit: contain;">
         </div>
       </div>
-    <div class="back-button" (click)="goBack()">
-     <i class="fas fa-arrow-left" style="border-radius: 50%;
+    </div>
+  </div>
+  <div class="back-button" (click)="goBack()">
+    <i class="fas fa-arrow-left" style="border-radius: 50%;
      background-color: #6D428F;
      color: white;
      padding: 4px;
@@ -32,34 +32,46 @@
      align-items: end;
      width: 20px;
      height: 20px;">
-     </i>
-     Back
+    </i>
+    Back
+  </div>
+  <div class="search-bar">
+    <input class="form-control" placeholder="search for resturant" type="text" />
+  </div>
+  <div class="category-icons">
+    <div *ngFor="let category of categories" (click)="onCategoryClick(category.id)">
+      <img [src]="category.logo" [alt]="category.name" height="60" width="60" />
+      <div>{{ category.name }}</div>
     </div>
-    <div class="search-bar">
-     <input class="form-control" placeholder="search for resturant" type="text"/>
+  </div>
+
+
+  <div *ngIf="!isLoading; else shimmerEffect">
+    <div class="card" *ngFor="let offer of offers" [routerLink]="['/offer-detail']" [queryParams]="{ id: offer.id }">
+      <button class="share-button" (click)="shareContent()">
+        <img src="/assets/share.png" alt="Share">
+        <span style="margin-left: 5px;">Share</span>
+      </button>
+      <img alt="Triple Cheeseburger with price 19 ريال" class="offer-img" height="180" [src]="offer?.images[0]?.url"
+        width="600" />
     </div>
-    <div class="category-icons">
-      <div *ngFor="let category of categories" (click)="onCategoryClick(category.id)">
-        <img [src]="category.logo" [alt]="category.name" height="60" width="60" />
-        <div>{{ category.name }}</div>
-      </div>
+    <!-- <div *ngIf="showShareMenu" class="share-menu">
+      <share-buttons theme="circles-dark"
+      [include]="['copy', 'facebook', 'email', 'messenger', 'mix', 'line', 'linkedin', 'pinterest', 'print', 'reddit', 'sms', 'telegram', 'tumblr', 'twitter', 'viber', 'vk', 'xing', 'whatsapp']"
+      [showIcon]="true"
+      [showText]="false"
+      url="https://www.itsolutionstuff.com/post/whats-new-in-laravel-11-new-features-and-latest-updatesexample.html"
+      description="Angular 18 Share Buttons"
+      twitterAccount="HardikSavani19"
+      class="pt-5">
+    </share-buttons>
+    </div> -->
+  </div>
+  <ng-template #shimmerEffect>
+    <div class="shimmer-wrapper">
+      <div class="shimmer"></div>
+      <div class="shimmer"></div>
+      <div class="shimmer"></div>
     </div>
-    
-    
-    <div *ngIf="!isLoading; else shimmerEffect">
-    <div class="card" *ngFor="let offer of offers" [routerLink]="['/offer-detail']" [queryParams]="{ id: offer.id }"
-    >
-        <button class="share-button">
-            <img src="/assets/share.png" alt="">
-            <span style="margin-left: 5px;">Share</span>      </button>
-     <img alt="Triple Cheeseburger with price 19 ريال" class="offer-img" height="180" [src]="offer?.images[0]?.url" width="600"/>
-    </div>
-    </div>
-    <ng-template #shimmerEffect>
-      <div class="shimmer-wrapper">
-        <div class="shimmer"></div>
-        <div class="shimmer"></div>
-        <div class="shimmer"></div>
-      </div>
-    </ng-template>
-   </div>
+  </ng-template>
+</div>
