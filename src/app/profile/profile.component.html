@@ -154,9 +154,9 @@
                 loading="lazy">
               </iframe>
             </div> -->
-            <div class="review-card mb-4" *ngFor="let review of reviews">
+            <div class="review-card mb-4">
 
-                <div class="review-header">
+                <!-- <div class="review-header">
                     <img alt="Profile picture of reviewer" height="50"
                         src="https://storage.googleapis.com/a1aa/image/NeAxbvBcsKW5V6k3Ho2OQPv5Iub4H3DkZ7B757ziTEzYxr6JA.jpg"
                         width="50" />
@@ -167,7 +167,6 @@
                         <div class="date">
                             {{review.created_at | date: 'MMM dd, yyyy'}}
                         </div>
-                        <p class="review-text">{{ review.title }}</p>
                     </div>
                     <div class="stars">
                         <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
@@ -179,7 +178,7 @@
                             ></i>
                           </ng-container>
                     </div>
-                </div>
+                </div> -->
 
 
                 <!-- <div class="review-body">
@@ -196,7 +195,8 @@
                         src="https://storage.googleapis.com/a1aa/image/uXJXyPKy6C4RPR9roKeS9KJLS7kqvRZRvG3HXJuOI07Xxr6JA.jpg"
                         width="60" />
                 </div> -->
-                <!-- <div *ngFor="let review of reviews" class="review-container">
+                <button (click)="giveReview()">Give Review</button>
+                <div *ngFor="let review of reviews" class="review-container">
                     <div class="review-header">
                         <div class="avatar">{{ review.author_name[0] }}</div>
                         <div class="author-details">
@@ -212,7 +212,7 @@
                         </div>
                         <p class="review-text">{{ review.text }}</p>
                     </div>
-                </div> -->
+                </div>
 
             </div>
         </div>

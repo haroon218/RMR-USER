@@ -20,7 +20,7 @@ export class ProfileComponent {
     this.userData = this.service.getData('user');
     this.profileInformation()
     this.userinfo()
-    // this.fetchGoogleReviews()
+    this.fetchGoogleReviews()
   }
   goBack() {
     this.location.back();
@@ -38,32 +38,42 @@ this.service.profileInformation(this.userData.companies[0].company_id).subscribe
     this.offers=this.profileData.offers
     this.rewards=this.profileData.rewards
     this.branches=this.profileData.branches
-    this.reviews=this.profileData.ratings
+    // this.reviews=this.profileData.ratings
 
   }
 })
   }
   fetchGoogleReviews() {
-    const placeId = 'ChIJN1t_tDeuEmsRUsoyG83frY4'; // Replace with your Place ID
+    const placeId = 'ChIJO-IXHV4BGTkRAVAYYEc-MCc'; // Replace with your Place ID
     const map = new google.maps.Map(document.createElement('div'), {
-      center: { lat: -33.867, lng: 151.195 },
-      zoom: 15
+      center: { lat: 24.7136, lng: 46.6753 }, // Use a location near the place
+      zoom: 15,
     });
-
+  
     const service = new google.maps.places.PlacesService(map);
     service.getDetails(
-      { placeId, fields: ['reviews'] },
+      {
+        placeId,
+        fields: ['reviews', 'name', 'rating'], // Specify the required fields
+      },
       (place, status) => {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-          debugger
-          this.reviews = place?.reviews || [];
+        debugger
+        if (status === google.maps.places.PlacesServiceStatus.OK && place) {
+          console.log('Fetched place details:', place);
+          this.reviews = place.reviews || []; // Update the reviews
         } else {
           console.error('Failed to fetch reviews:', status);
         }
       }
     );
   }
-
+  
+  giveReview() {
+    const placeId = 'ChIJO-IXHV4BGTkRAVAYYEc-MCc'; // Replace with the actual Place ID
+    const reviewUrl = `https://search.google.com/local/writereview?placeid=${placeId}`;
+    window.open(reviewUrl, '_blank'); // Opens the review screen in a new tab or app
+  }
+  
   formatDate(timestamp: number): string {
     const date = new Date(timestamp * 1000);
     return date.toDateString();
